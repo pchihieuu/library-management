@@ -39,7 +39,7 @@ class App {
             var _a;
             const db = new database_1.default();
             try {
-                yield ((_a = db.sequelize) === null || _a === void 0 ? void 0 : _a.sync({ force: true, alter: true }));
+                yield ((_a = db.sequelize) === null || _a === void 0 ? void 0 : _a.sync());
                 console.log("✅ Database synchronized successfully.");
             }
             catch (error) {

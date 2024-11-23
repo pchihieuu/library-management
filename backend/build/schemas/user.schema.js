@@ -17,7 +17,7 @@ exports.updateUserSchema = zod_1.z.object({
         .object({
         Email: zod_1.z.string().email({ message: "Invalid email address!" }).optional(),
         FullName: zod_1.z.string().min(1, { message: "Full name is required!" }).optional(),
-        Role: zod_1.z.enum(["Admin", "Member", "Gust"], {
+        Role: zod_1.z.enum(["Admin", "Member", "Guest"], {
             errorMap: () => ({ message: "Role must be 'Admin', 'Member' or 'Guest'!" })
         }).optional(),
     })

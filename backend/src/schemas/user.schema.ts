@@ -16,7 +16,7 @@ export const updateUserSchema = z.object({
     .object({
       Email: z.string().email({ message: "Invalid email address!" }).optional(),
       FullName: z.string().min(1, { message: "Full name is required!" }).optional(),
-      Role: z.enum(["Admin", "Member", "Gust"], {
+      Role: z.enum(["Admin", "Member", "Guest"], {
         errorMap: () => ({ message: "Role must be 'Admin', 'Member' or 'Guest'!" })
       }).optional(),
     })

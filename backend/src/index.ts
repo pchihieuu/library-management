@@ -33,7 +33,7 @@ class App {
   protected async databaseSync(): Promise<void> {
     const db = new Database();
     try {
-      await db.sequelize?.sync({force: true, alter: true}); 
+      await db.sequelize?.sync(); 
       console.log("✅ Database synchronized successfully.");
     } catch (error) {
       console.error("❌ Failed to sync the database:", error);
