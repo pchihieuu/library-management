@@ -1,0 +1,6 @@
+# Prettierignore
+.idea
+node_modules
+dist
+*.log
+.env*
