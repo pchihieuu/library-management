@@ -55,5 +55,5 @@ const port: number = 8000;
 const app = new App().app;
 
 app.listen(port, () => {
-  console.log(`✅ Server started successfully on port ${port}!`);
+  console.log(`🚀 Server started successfully on port ${port}!`);
 });

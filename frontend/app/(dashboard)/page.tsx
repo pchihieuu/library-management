@@ -1,13 +1,5 @@
 'use client';
-
-import Author from "./authors/page";
-
-
-
-
-
-
-
+import Home from "./home";
 export default function HomePage() {
   return (
     <main className="container mx-auto p-4">
@@ -15,7 +7,7 @@ export default function HomePage() {
       
       {/* Gọi component Author */}
       <div className="mt-4">
-        <Author />
+        <Home />
       </div>
     </main>
   );
