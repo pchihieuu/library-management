@@ -23,23 +23,23 @@ This is a **Library Management System** built using **Node.js**, **Express**, **
 
 Homepage: 
 
-![Homepage]('./public/images/homepage.png');
+![Home](./public/images/homepage.png)
 
 Authors Management:
 
-![Authors]('./public/images/author-page.png');
+![Authors](./public/images/author-page.png);
 
 Category Management:
 
-![Category]('./public/images/category-page.png');
+![Category](./public/images/category-page.png);
 
 Book Management:
 
-![Book Management]('./public/images/book-page.png');
+![Book Management](./public/images/book-page.png);
 
 Users Management:
 
-![User]('./public/images/user-page.png')
+![User](./public/images/user-page.png);
 
 
 ## Prerequisites
