@@ -18,7 +18,30 @@ This is a **Library Management System** built using **Node.js**, **Express**, **
 - **Category Management**: Classify books into categories such as Fiction, Non-Fiction, etc.
 - **User Management**: Add and manage users, track user roles (Admin/User), and update user details.
 - **Borrowing System**: Allows users to borrow, return, and renew books.
-  
+
+## Result
+
+Homepage: 
+
+![Homepage]('./public/images/homepage.png');
+
+Authors Management:
+
+![Authors]('./public/images/author-page.png');
+
+Category Management:
+
+![Category]('./public/images/category-page.png');
+
+Book Management:
+
+![Book Management]('./public/images/book-page.png');
+
+Users Management:
+
+![User]('./public/images/user-page.png')
+
+
 ## Prerequisites
 
 - **Node.js**: [Download & Install](https://nodejs.org/)
