@@ -89,7 +89,7 @@ export function AuthorsTable({
             <TableRow>
               <TableHead>Name</TableHead>
               <TableHead>Bio</TableHead>
-              <TableHead>Created At</TableHead>
+              <TableHead>Join At</TableHead>
               <TableHead>
                 <span className="sr-only">Actions</span>
               </TableHead>

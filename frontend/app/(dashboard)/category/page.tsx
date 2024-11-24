@@ -9,7 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal, Plus } from 'lucide-react';
 import { TableCell, TableRow, Table } from '@/components/ui/table';
 import { AuthorModal } from '@/components/AuthorModal';
 import {
@@ -139,13 +139,13 @@ export default function CategoryPage() {
       <h1 className="text-2xl font-bold mb-4">Categories</h1>
 
       <Button onClick={() => setIsAddOpen(true)} className="mb-4">
-        Add New Category
+      <Plus className="mr-2 h-4 w-4" /> Add New Category
       </Button>
 
       <Table className="table">
         <thead>
           <tr>
-            <th>Category Name</th>
+            <th>Name</th>
             <th>Description</th>
             <th>Created At</th>
             <th>Actions</th>
@@ -272,7 +272,7 @@ export default function CategoryPage() {
           readOnly
         >
           <div className="mb-4">
-            <strong>Category Name:</strong> {selectedCategory.CategoryName}
+            <strong>Name:</strong> {selectedCategory.CategoryName}
           </div>
           <div className="mb-4">
             <strong>Description:</strong>{' '}

@@ -8,7 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal, Plus } from 'lucide-react';
 import { TableCell, TableRow, Table } from '@/components/ui/table';
 import {
   createBook,
@@ -146,7 +146,7 @@ export default function BookPage() {
       <h1 className="text-2xl font-bold mb-4">Books</h1>
 
       <Button onClick={() => setIsAddOpen(true)} className="mb-4">
-        Add New Book
+      <Plus className="mr-2 h-4 w-4" /> Add New Book
       </Button>
 
       <Table className="table">
@@ -172,9 +172,9 @@ export default function BookPage() {
               </TableCell>
               <TableCell>{book.ISBN}</TableCell>
               <TableCell>
-                <span className="px-3 py-1.5 inline-block rounded-lg text-white text-sm font-medium bg-gradient-to-br from-pink-500 to-purple-700 shadow-xl hover:shadow-2xl hover:translate-y-[-2px] transition-all">
+              <span className="px-3 py-1.5 inline-block rounded-lg text-white text-sm font-normal bg-gradient-to-br from-pink-500 to-purple-700 shadow-xl hover:shadow-2xl hover:translate-y-[-2px] transition-all">
                   {book.AuthorBook || 'Unknown'}
-                </span>
+              </span>
               </TableCell>
               <TableCell>{book.TotalCopies}</TableCell>
               <TableCell>{book.AvailableCopies}</TableCell>

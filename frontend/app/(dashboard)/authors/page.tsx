@@ -9,7 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal, Plus } from 'lucide-react';
 import { TableCell, TableRow, Table } from '@/components/ui/table';
 import { AuthorModal } from '@/components/AuthorModal';
 import {
@@ -124,9 +124,9 @@ export default function Author() {
 
   return (
     <main className="container mx-auto p-4">
-      <div className="mt-4"></div>
+      <h1 className="text-2xl font-bold mb-4">Authors</h1>
       <Button onClick={() => setIsAddOpen(true)} className="mb-4">
-        Add New Author
+      <Plus className="mr-2 h-4 w-4" /> Add New Author
       </Button>
 
       <Table className="table">
@@ -134,7 +134,7 @@ export default function Author() {
           <tr>
             <th>Full Name</th>
             <th>Bio</th>
-            <th>Created At</th>
+            <th>Join At</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -142,7 +142,7 @@ export default function Author() {
           {authors.map((author) => (
             <TableRow key={author.AuthorID}>
               <TableCell
-                className="font-medium cursor-pointer"
+                className="font-medium cursor-pointer min-w-[200px]"
                 onClick={() => handleViewDetails(author)}
               >
                 {author.FullName}
@@ -254,7 +254,7 @@ export default function Author() {
             <strong>Bio:</strong> {selectedAuthor.Bio}
           </div>
           <div>
-            <strong>Created At:</strong>{' '}
+            <strong>Join At:</strong>{' '}
             {new Date(selectedAuthor.createdAt).toLocaleDateString('en-US')}
           </div>
         </AuthorModal>

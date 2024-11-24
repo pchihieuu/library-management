@@ -8,7 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal, Plus } from 'lucide-react';
 import { TableCell, TableRow, Table } from '@/components/ui/table';
 import {
   createUser,
@@ -137,7 +137,7 @@ export default function UserPage() {
       case 'Member':
         return 'bg-gradient-to-r from-blue-400 via-blue-500 to-blue-500 text-white shadow-lg';
       case 'Guest':
-        return 'bg-gradient-to-r from-gray-400 via-gray-500 to-gray-500 text-white shadow-lg';
+        return 'bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-500 text-white shadow-lg';
       default:
         return 'bg-gradient-to-r from-gray-300 to-gray-500 text-black shadow-lg';
     }
@@ -154,9 +154,8 @@ export default function UserPage() {
   return (
     <main className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Users</h1>
-
       <Button onClick={() => setIsAddOpen(true)} className="mb-4">
-        Add New User
+      <Plus className="mr-2 h-4 w-4" /> Add New User
       </Button>
 
       <Table className="table">
@@ -165,7 +164,7 @@ export default function UserPage() {
               <th>Full Name</th>
               <th>Email</th>
               <th className="text-center">Role</th>
-              <th>Created At</th>
+              <th>Join At</th>
               <th>Actions</th>
             </tr>
         </thead>
@@ -326,7 +325,7 @@ export default function UserPage() {
               <strong>Role:</strong> {selectedUser.Role}
             </p>
             <p>
-              <strong>Created At:</strong>{' '}
+              <strong>Join At:</strong>{' '}
               {new Date(selectedUser.createdAt).toLocaleDateString('en-US')}
             </p>
           </div>
