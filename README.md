@@ -39,7 +39,8 @@ cd library-management-system
 cd backend
 ```
 ### 3. Install dependencies
-```bash npm install
+```bash 
+npm install
 ```
 ## 4. Set up environment variables
 
