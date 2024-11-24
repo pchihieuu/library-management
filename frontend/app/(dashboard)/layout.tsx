@@ -66,7 +66,7 @@ function DesktopNav() {
           className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
         >
           <VercelLogo className="h-3 w-3 transition-all group-hover:scale-110" />
-          <span className="sr-only">Acme Inc</span>
+          <span className="sr-only"></span>
         </Link>
 
         <NavItem href="/authors" label="Authors">
@@ -126,32 +126,32 @@ function MobileNav() {
             <span className="sr-only">Vercel</span>
           </Link>
           <Link
-            href="#"
+            href="/authors"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <Home className="h-5 w-5" />
-            Dashboard
+            Authors
           </Link>
           <Link
-            href="#"
+            href="/category"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <ShoppingCart className="h-5 w-5" />
-            Orders
+            Categories
           </Link>
           <Link
-            href="#"
+            href="/books"
             className="flex items-center gap-4 px-2.5 text-foreground"
           >
             <Package className="h-5 w-5" />
-            Products
+            Books
           </Link>
           <Link
-            href="#"
+            href="/users"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <Users2 className="h-5 w-5" />
-            Customers
+            Users
           </Link>
           <Link
             href="#"
