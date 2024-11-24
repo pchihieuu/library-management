@@ -31,4 +31,44 @@ Follow these steps to set up the project locally:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/library-management-system.git
+git clone https://github.com/pchihieuu/library-management
+```
+### 2. Navigate into the project directory
+```bash
+cd library-management-system
+cd backend
+```
+### 3. Install dependencies
+```bash npm install
+```
+## 4. Set up environment variables
+
+Create a .env file in the root directory and configure your PostgreSQL credentials:
+```bash
+DB_HOST=localhost
+DB_PORT=YOUR_PORT
+DB_USER=YOUR_PG_USER
+DB_PASSWORD=YOUR_PG_PASSWORD
+DB_NAME=YOUR_DATABASE
+```
+### 5. Run database migrations
+Make sure PostgreSQL is running and execute the migrations to set up the database:
+```bash
+npx sequelize-cli db:migrate
+```
+
+### 6. Run the application
+```bash
+npm run dev
+```
+The backend server will run on http://localhost:5000, and the frontend NextJS application will be available at http://localhost:3000.
+
+## API Documentation
+The API is documented using Postman. You can explore and test the available API endpoints via the following link:
+[Library Management API Documentation](https://s.net.vn/wVhB)
+
+## ERD Diagram
+
+Here is the **Entity-Relationship Diagram (ERD)** of the library management system:
+
+![ERD Diagram](./public/images/fullstack-boolfly.png)
