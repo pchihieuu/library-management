@@ -35,7 +35,7 @@ __decorate([
 ], UserDto.prototype, "Email", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsIn)(["Admin", "Guest", "Member"]),
+    (0, class_validator_1.IsIn)(['Admin', 'Guest', 'Member']),
     __metadata("design:type", String)
 ], UserDto.prototype, "Role", void 0);
 __decorate([

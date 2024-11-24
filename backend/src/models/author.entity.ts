@@ -1,11 +1,10 @@
-import { Column, DataType, Model, Table, HasMany, BelongsToMany } from "sequelize-typescript";
-import { Book } from "./book.entity";
-import { BooksAuthors } from "./booksauthor.entity";
-
+import { Column, DataType, Model, Table, HasMany, BelongsToMany } from 'sequelize-typescript';
+import { Book } from './book.entity';
+import { BooksAuthors } from './booksauthor.entity';
 
 @Table({
-  tableName: "Authors",
-  paranoid: true, 
+  tableName: 'Authors',
+  paranoid: true,
 })
 export class Author extends Model {
   @Column({
@@ -27,14 +26,12 @@ export class Author extends Model {
   })
   Bio?: string;
 
- 
   @Column({
     type: DataType.DATE,
     allowNull: true,
     field: 'deletedAt',
   })
   deletedAt?: Date;
-
 
   @BelongsToMany(() => Book, () => BooksAuthors)
   books!: Book[];

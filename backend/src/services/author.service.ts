@@ -1,5 +1,5 @@
-import { Author } from "../models/author.entity";
-import { GenericService } from "./generic.service";
+import { Author } from '../models/author.entity';
+import { GenericService } from './generic.service';
 
 export class AuthorService extends GenericService<Author> {
   constructor() {
@@ -10,14 +10,12 @@ export class AuthorService extends GenericService<Author> {
     try {
       const authors = await this.findAll({
         where: {
-          FullName: fullName
-        }
+          FullName: fullName,
+        },
       });
       return authors;
     } catch (error) {
       throw new Error(`Error while retrieving authors by name: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }
-
-  
 }

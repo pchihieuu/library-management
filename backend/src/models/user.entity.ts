@@ -1,9 +1,8 @@
-import { Column, DataType, Model, Table, HasMany } from "sequelize-typescript";
-import { Borrowing } from "./borrowing.entity";
-
+import { Column, DataType, Model, Table, HasMany } from 'sequelize-typescript';
+import { Borrowing } from './borrowing.entity';
 
 @Table({
-  tableName: "Users",
+  tableName: 'Users',
   paranoid: true,
 })
 export class User extends Model {
@@ -31,7 +30,7 @@ export class User extends Model {
     type: DataType.ENUM('Admin', 'Member', 'Guest'),
     allowNull: false,
   })
-  Role!:  'Admin' | 'Member' | 'Guest';
+  Role!: 'Admin' | 'Member' | 'Guest';
 
   @Column({
     type: DataType.DATE,
@@ -42,5 +41,4 @@ export class User extends Model {
 
   @HasMany(() => Borrowing)
   borrowings!: Borrowing[];
-
 }

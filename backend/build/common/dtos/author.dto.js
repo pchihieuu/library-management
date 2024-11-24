@@ -19,7 +19,7 @@ class AuthorDto {
         this.AuthorID = author.AuthorID;
         this.FullName = author.FullName;
         this.Bio = author.Bio;
-        this.books = (_a = author.books) === null || _a === void 0 ? void 0 : _a.map((book) => new book_dto_1.BookDto(book));
+        this.books = (_a = author.books) === null || _a === void 0 ? void 0 : _a.map(book => new book_dto_1.BookDto(book));
     }
 }
 exports.AuthorDto = AuthorDto;

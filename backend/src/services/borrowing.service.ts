@@ -1,7 +1,6 @@
-import { Borrowing } from "../models/borrowing.entity";
-import { Book } from "../models/book.entity";
-import { BorrowingDto } from "../common/dtos/borrowing.dto";
-
+import { Borrowing } from '../models/borrowing.entity';
+import { Book } from '../models/book.entity';
+import { BorrowingDto } from '../common/dtos/borrowing.dto';
 
 export class BorrowingService {
   async borrowBook(borrowingDto: BorrowingDto): Promise<Borrowing> {
@@ -10,11 +9,11 @@ export class BorrowingService {
     try {
       const book = await Book.findByPk(BookID);
       if (!book) {
-        throw new Error("Book not found.");
+        throw new Error('Book not found.');
       }
 
       if (book.AvailableCopies <= 0) {
-        throw new Error("No available copies left to borrow.");
+        throw new Error('No available copies left to borrow.');
       }
 
       const borrowing = await Borrowing.create({
@@ -38,13 +37,13 @@ export class BorrowingService {
     try {
       const borrowing = await Borrowing.findByPk(borrowingId);
       if (!borrowing) {
-        throw new Error("Borrowing record not found.");
+        throw new Error('Borrowing record not found.');
       }
 
       if (borrowing.ReturnDate) {
-        throw new Error("Book has already been returned.");
+        throw new Error('Book has already been returned.');
       }
-      
+
       borrowing.ReturnDate = new Date();
 
       const book = await Book.findByPk(borrowing.BookID);
@@ -64,11 +63,11 @@ export class BorrowingService {
     try {
       const borrowing = await Borrowing.findByPk(borrowingId);
       if (!borrowing) {
-        throw new Error("Borrowing record not found.");
+        throw new Error('Borrowing record not found.');
       }
 
       if (borrowing.ReturnDate) {
-        throw new Error("Book has already been returned.");
+        throw new Error('Book has already been returned.');
       }
 
       borrowing.DueDate = newDueDate;

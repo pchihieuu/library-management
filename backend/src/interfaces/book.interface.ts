@@ -1,7 +1,6 @@
 import { IAuthor } from './author.interface';
 import { ICategory } from './category.interface';
 
-
 export interface IBook {
   BookID: string;
   Title: string;
@@ -10,7 +9,7 @@ export interface IBook {
   Description?: string;
   AuthorBook: string;
   CategoryBook: string;
-  authors: IAuthor[];  
-  categories: ICategory[]; 
-//   borrowings: IBorrowing[]; 
+  authors: IAuthor[];
+  categories: ICategory[];
+  //   borrowings: IBorrowing[];
 }

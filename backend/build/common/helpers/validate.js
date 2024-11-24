@@ -21,14 +21,14 @@ const validate = (schema) => (req, res, next) => __awaiter(void 0, void 0, void 
     }
     catch (err) {
         if (err instanceof zod_1.ZodError) {
-            const errorDetails = err.errors.map((issue) => ({
+            const errorDetails = err.errors.map(issue => ({
                 path: issue.path,
                 message: issue.message,
             }));
         }
         return res.status(500).json({
-            status: "Internal Server Error",
-            message: "Something went wrong!",
+            status: 'Internal Server Error',
+            message: 'Something went wrong!',
         });
     }
 });

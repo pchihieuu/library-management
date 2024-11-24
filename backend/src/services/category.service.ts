@@ -1,5 +1,5 @@
-import { Category } from "../models/category.entity"; 
-import { GenericService } from "./generic.service";   
+import { Category } from '../models/category.entity';
+import { GenericService } from './generic.service';
 
 export class CategoryService extends GenericService<Category> {
   constructor() {

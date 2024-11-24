@@ -1,6 +1,5 @@
-import { IBook } from "./book.interface";
-import { IUser } from "./user.interface";
-
+import { IBook } from './book.interface';
+import { IUser } from './user.interface';
 
 export interface IBorrowing {
   BorrowingID: string;
@@ -11,5 +10,5 @@ export interface IBorrowing {
   ReturnDate?: Date;
   Renewed: boolean;
   user?: IUser;
-  book?: IBook; 
+  book?: IBook;
 }

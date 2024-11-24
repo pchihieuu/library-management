@@ -1,5 +1,4 @@
 export interface IBooksAuthors {
-    BookID: string;  
-    AuthorID: string;  
+  BookID: string;
+  AuthorID: string;
 }
-  

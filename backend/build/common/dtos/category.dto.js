@@ -17,7 +17,7 @@ class CategoryDto {
         this.CategoryID = category.CategoryID;
         this.CategoryName = category.CategoryName;
         this.Description = category.Description || '';
-        this.books = category.books ? category.books.map((book) => new book_dto_1.BookDto(book)) : [];
+        this.books = category.books ? category.books.map(book => new book_dto_1.BookDto(book)) : [];
     }
 }
 exports.CategoryDto = CategoryDto;

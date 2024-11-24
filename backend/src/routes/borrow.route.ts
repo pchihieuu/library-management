@@ -1,6 +1,6 @@
 // src/routes/borrowing.routes.ts
-import { BorrowingController } from "../controllers/borrowing.controller";
-import BaseRoutes from "./base/base.route";
+import { BorrowingController } from '../controllers/borrowing.controller';
+import BaseRoutes from './base/base.route';
 
 class BorrowingRoutes extends BaseRoutes {
   private borrowingController: BorrowingController;
@@ -9,9 +9,9 @@ class BorrowingRoutes extends BaseRoutes {
     super();
     this.borrowingController = new BorrowingController();
     this.routes = this.routes.bind(this);
-    this.router.post("/borrow", this.borrowingController.borrowBook.bind(this.borrowingController));
-    this.router.put("/return/:borrowingId", this.borrowingController.returnBook.bind(this.borrowingController));
-    this.router.put("/renew/:borrowingId", this.borrowingController.renewBook.bind(this.borrowingController));
+    this.router.post('/borrow', this.borrowingController.borrowBook.bind(this.borrowingController));
+    this.router.put('/return/:borrowingId', this.borrowingController.returnBook.bind(this.borrowingController));
+    this.router.put('/renew/:borrowingId', this.borrowingController.renewBook.bind(this.borrowingController));
   }
 
   public routes(): void {
@@ -19,4 +19,4 @@ class BorrowingRoutes extends BaseRoutes {
   }
 }
 
-export default new BorrowingRoutes().router;  
+export default new BorrowingRoutes().router;

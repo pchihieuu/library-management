@@ -1,23 +1,22 @@
-import { Column, DataType, Model, Table, ForeignKey, BelongsTo } from "sequelize-typescript";
-import { User } from "./user.entity";
-import { Book } from "./book.entity";
-
+import { Column, DataType, Model, Table, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { User } from './user.entity';
+import { Book } from './book.entity';
 
 @Table({
-  tableName: "Borrowings",
+  tableName: 'Borrowings',
   paranoid: true,
 })
 export class Borrowing extends Model {
   @Column({
-    type: DataType.UUID, 
+    type: DataType.UUID,
     primaryKey: true,
-    defaultValue: DataType.UUIDV4, 
+    defaultValue: DataType.UUIDV4,
   })
   BorrowingID!: string;
 
   @ForeignKey(() => User)
   @Column({
-    type: DataType.UUID, 
+    type: DataType.UUID,
   })
   UserID!: string;
   @Column({
@@ -29,7 +28,7 @@ export class Borrowing extends Model {
 
   @ForeignKey(() => Book)
   @Column({
-    type: DataType.UUID, 
+    type: DataType.UUID,
   })
   BookID!: string;
 

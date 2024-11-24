@@ -24,8 +24,8 @@ class BookDto {
         this.Description = book.Description;
         this.AuthorBook = book.AuthorBook;
         this.CategoryBook = book.CategoryBook;
-        this.authors = book.authors ? book.authors.map((author) => new author_dto_1.AuthorDto(author)) : [];
-        this.categories = book.categories ? book.categories.map((category) => new category_dto_1.CategoryDto(category)) : [];
+        this.authors = book.authors ? book.authors.map(author => new author_dto_1.AuthorDto(author)) : [];
+        this.categories = book.categories ? book.categories.map(category => new category_dto_1.CategoryDto(category)) : [];
     }
 }
 exports.BookDto = BookDto;

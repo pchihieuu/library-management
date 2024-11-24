@@ -26,16 +26,16 @@ export class GenericController<T extends Model> {
       }
       res.status(200).json(item);
     } catch (error) {
-      next(error); 
+      next(error);
     }
   };
 
   public create = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const item = await this.service.create(req.body);
-      res.status(201).json(item); 
+      res.status(201).json(item);
     } catch (error) {
-      next(error); 
+      next(error);
     }
   };
 
@@ -45,9 +45,9 @@ export class GenericController<T extends Model> {
       if (!item) {
         return res.status(404).json({ message: 'Item not found' });
       }
-      res.status(200).json(item);  
+      res.status(200).json(item);
     } catch (error) {
-      next(error); 
+      next(error);
     }
   };
 
@@ -57,9 +57,9 @@ export class GenericController<T extends Model> {
       if (!deleted) {
         return res.status(404).json({ message: 'Item not found' });
       }
-      res.status(200).json({ message: 'Item deleted successfully' }); 
+      res.status(200).json({ message: 'Item deleted successfully' });
     } catch (error) {
-      next(error); 
+      next(error);
     }
   };
 }

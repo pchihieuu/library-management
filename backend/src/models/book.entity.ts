@@ -1,12 +1,12 @@
-import { Column, DataType, Model, Table, BelongsToMany, HasMany } from "sequelize-typescript";
-import { Author } from "./author.entity";
-import { Category } from "./category.entity";
-import { BooksAuthors } from "./booksauthor.entity";
-import { BooksCategories } from "./bookscategory.entity";
-import { Borrowing } from "./borrowing.entity";
+import { Column, DataType, Model, Table, BelongsToMany, HasMany } from 'sequelize-typescript';
+import { Author } from './author.entity';
+import { Category } from './category.entity';
+import { BooksAuthors } from './booksauthor.entity';
+import { BooksCategories } from './bookscategory.entity';
+import { Borrowing } from './borrowing.entity';
 
 @Table({
-  tableName: "Books",
+  tableName: 'Books',
   paranoid: true,
 })
 export class Book extends Model {
@@ -43,14 +43,14 @@ export class Book extends Model {
     type: DataType.INTEGER,
     defaultValue: 0,
   })
-  TotalCopies!: number; 
+  TotalCopies!: number;
 
   @Column({
     type: DataType.INTEGER,
     defaultValue: 0,
   })
-  AvailableCopies!: number; 
-  
+  AvailableCopies!: number;
+
   @Column({
     type: DataType.ENUM('available', 'borrowed', 'reserved'),
     allowNull: false,

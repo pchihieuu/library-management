@@ -1,4 +1,4 @@
-import { Model, ModelStatic, FindOptions, Op, WhereOptions} from 'sequelize';
+import { Model, ModelStatic, FindOptions, Op, WhereOptions } from 'sequelize';
 
 export class GenericService<T extends Model> {
   private model: ModelStatic<T>;
@@ -7,7 +7,7 @@ export class GenericService<T extends Model> {
     this.model = model;
   }
 
-  async create(data: T["_creationAttributes"]): Promise<T> {
+  async create(data: T['_creationAttributes']): Promise<T> {
     try {
       const entity = await this.model.create(data);
       return entity;
@@ -53,11 +53,10 @@ export class GenericService<T extends Model> {
       if (!entity) {
         return false;
       }
-      await entity.destroy(); 
+      await entity.destroy();
       return true;
     } catch (error) {
       throw new Error(error instanceof Error ? error.message : 'An unknown error occurred');
     }
   }
-  
 }

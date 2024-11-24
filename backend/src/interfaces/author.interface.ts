@@ -1,9 +1,8 @@
-import { IBook } from "./book.interface";
+import { IBook } from './book.interface';
 
 export interface IAuthor {
-    AuthorID: string;
-    FullName: string;
-    Bio?: string;
-    books: IBook[];
-  }
-  
+  AuthorID: string;
+  FullName: string;
+  Bio?: string;
+  books: IBook[];
+}
