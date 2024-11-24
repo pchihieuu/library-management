@@ -161,63 +161,64 @@ export default function UserPage() {
 
       <Table className="table">
         <thead>
-          <tr>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th className="text-center">Role</th> <th>Created At</th>
-            <th>Actions</th>
-          </tr>
+            <tr>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th className="text-center">Role</th>
+              <th>Created At</th>
+              <th>Actions</th>
+            </tr>
         </thead>
+
         <tbody>
-          {users.map((user) => (
-            <TableRow key={user.UserID}>
-              <TableCell
-                className="font-medium cursor-pointer"
-                onClick={() => handleViewDetails(user)}
-              >
-                {user.FullName}
-              </TableCell>
-              <TableCell>{user.Email}</TableCell>
-              <TableCell className="text-center">
-                {' '}
-                <span
-                  className={`inline-block px-3 py-1 rounded-full ${getRoleColor(user.Role)}`}
+            {users.map((user) => (
+              <TableRow key={user.UserID}>
+                <TableCell
+                  className="font-medium cursor-pointer"
+                  onClick={() => handleViewDetails(user)}
                 >
-                  {user.Role}
-                </span>
-              </TableCell>
-              <TableCell className="hidden md:table-cell">
-                {new Date(user.createdAt).toLocaleDateString('en-US')}
-              </TableCell>
-              <TableCell>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button aria-haspopup="true" size="icon" variant="ghost">
-                      <MoreHorizontal className="h-4 w-4" />
-                      <span className="sr-only">Toggle menu</span>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                    <DropdownMenuItem onClick={() => handleViewDetails(user)}>
-                      View
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => handleEditUser(user)}>
-                      Edit
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      onClick={() => {
-                        setIsDeleteOpen(true);
-                        setSelectedUser(user);
-                      }}
-                    >
-                      Delete
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </TableCell>
-            </TableRow>
-          ))}
+                  {user.FullName}
+                </TableCell>
+                <TableCell>{user.Email}</TableCell>
+                <TableCell className="text-center">
+                  <span
+                    className={`inline-block px-3 py-1 rounded-full ${getRoleColor(user.Role)}`}
+                  >
+                    {user.Role}
+                  </span>
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
+                  {new Date(user.createdAt).toLocaleDateString('en-US')}
+                </TableCell>
+                <TableCell>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button aria-haspopup="true" size="icon" variant="ghost">
+                        <MoreHorizontal className="h-4 w-4" />
+                        <span className="sr-only">Toggle menu</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                      <DropdownMenuItem onClick={() => handleViewDetails(user)}>
+                        View
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => handleEditUser(user)}>
+                        Edit
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        onClick={() => {
+                          setIsDeleteOpen(true);
+                          setSelectedUser(user);
+                        }}
+                      >
+                        Delete
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
+              </TableRow>
+            ))}
         </tbody>
       </Table>
 
