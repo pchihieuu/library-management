@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* styles/globals.css */
+* {
+  font-family: 'Inter', 'Inter Fallback', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
