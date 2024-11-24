@@ -27,26 +27,19 @@ Homepage:
 
 Authors Management:
 
-![Authors](./public/images/author-page.png);
+![Authors](./public/images/author-page.png)
 
 Category Management:
 
-![Category](./public/images/category-page.png);
+![Category](./public/images/category-page.png)
 
 Book Management:
 
-![Book Management](./public/images/book-page.png);
+![Book Management](./public/images/book-page.png)
 
 Users Management:
 
-![User](./public/images/user-page.png);
-
-
-## Prerequisites
-
-- **Node.js**: [Download & Install](https://nodejs.org/)
-- **PostgreSQL**: [Download & Install](https://www.postgresql.org/download/)
-- **Git**: [Download & Install](https://git-scm.com/)
+![User](./public/images/user-page.png)
 
 ## Installation
 
@@ -60,10 +53,12 @@ git clone https://github.com/pchihieuu/library-management
 ```bash
 cd library-management-system
 cd backend
+cd frontend
 ```
 ### 3. Install dependencies
 ```bash 
 npm install
+pnpm install
 ```
 ## 4. Set up environment variables
 
@@ -83,7 +78,8 @@ npx sequelize-cli db:migrate
 
 ### 6. Run the application
 ```bash
-npm run dev
+npm run dev 
+pnpm dev
 ```
 The backend server will run on http://localhost:5000, and the frontend NextJS application will be available at http://localhost:3000.
 
@@ -122,7 +118,7 @@ Body:
 ```
 
 Update Book Request
-URL: PUT /books/:id
+URL: PATCH /books/:id
 Body:
 ```bash
 {
