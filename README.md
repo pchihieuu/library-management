@@ -73,3 +73,25 @@ The API is documented using Postman. You can explore and test the available API 
 Here is the **Entity-Relationship Diagram (ERD)** of the library management system:
 
 ![ERD Diagram](./public/images/fullstack-boolfly.png)
+
+## Testing API
+To test the API, we recommend using Postman. You can import the Postman collection into your Postman workspace by following these steps:
+
+Go to File → Import in Postman.
+Select the Import from Link option.
+Paste the Postman collection link provided above.
+### Example Test Data for Book Management API
+Create Book Request
+URL: POST /books
+Body:
+{
+    "Title": "1982",
+    "AuthorBook": "George Orwell",
+    "PublicationYear": 1930,
+    "ISBN": "978-0451524921",
+    "Description": "A dystopian novel set in a totalitarian society under constant surveillance, where the government controls everything.",
+    "TotalCopies": 100,
+    "AvailableCopies": 55,
+    "Status": "available",
+    "CategoryBook": "Dystopian"
+  }
