@@ -97,3 +97,12 @@ Body:
     "CategoryBook": "Dystopian"
   }
 ```
+
+Update Book Request
+URL: PUT /books/:id
+Body:
+```bash
+{
+    "TotalCopies": 200
+}
+```
