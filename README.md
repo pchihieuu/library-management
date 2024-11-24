@@ -1,6 +1,6 @@
 # Library Management System
 
-This is a comprehensive **Library Management System** built using **Node.js**, **Express**, **TypeScript**, **Next.js**, and **PostgreSQL**. It is designed to efficiently manage library operations such as book, author, category, and user management.
+This is a **Library Management System** built using **Node.js**, **Express**, **TypeScript**, **Next.js**, and **PostgreSQL**. It is designed to efficiently manage library operations such as book, author, category, and user management.
 
 ## Technologies Used
 
