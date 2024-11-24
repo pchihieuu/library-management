@@ -84,6 +84,7 @@ Paste the Postman collection link provided above.
 Create Book Request
 URL: POST /books
 Body:
+```bash
 {
     "Title": "1982",
     "AuthorBook": "George Orwell",
@@ -95,3 +96,4 @@ Body:
     "Status": "available",
     "CategoryBook": "Dystopian"
   }
+```
