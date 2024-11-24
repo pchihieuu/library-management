@@ -1,4 +1,4 @@
-import { IsUUID, IsDate, IsOptional, IsBoolean } from "class-validator";
+import { IsUUID, IsDate, IsOptional, IsBoolean } from 'class-validator';
 
 export class BorrowingDto {
   @IsUUID()

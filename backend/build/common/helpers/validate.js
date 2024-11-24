@@ -25,10 +25,6 @@ const validate = (schema) => (req, res, next) => __awaiter(void 0, void 0, void 
                 path: issue.path,
                 message: issue.message,
             }));
-            return res.status(400).json({
-                status: "Bad Request",
-                errors: errorDetails,
-            });
         }
         return res.status(500).json({
             status: "Internal Server Error",

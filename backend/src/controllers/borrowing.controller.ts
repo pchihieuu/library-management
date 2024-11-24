@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import { BorrowingService } from "../services/borrowing.service";
-import { BorrowingDto } from "../common/dtos/borrowing.dto";
+import { Request, Response } from 'express';
+import { BorrowingService } from '../services/borrowing.service';
+import { BorrowingDto } from '../common/dtos/borrowing.dto';
 
 export class BorrowingController {
   private borrowingService: BorrowingService;
@@ -8,7 +8,6 @@ export class BorrowingController {
   constructor() {
     this.borrowingService = new BorrowingService();
   }
-
 
   borrowBook = async (req: Request, res: Response): Promise<void> => {
     try {

@@ -13,7 +13,7 @@ export class UserDto implements IUser {
   public Email: string;
 
   @IsString()
-  @IsIn(["Admin", "Guest", "Member"])
+  @IsIn(['Admin', 'Guest', 'Member'])
   public Role: string;
 
   @IsOptional()
