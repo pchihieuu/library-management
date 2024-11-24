@@ -1,39 +1,58 @@
 import React from 'react';
-import Head from 'next/head';
 
-const Home: React.FC = () => {
+const Home = () => {
   return (
-    <>
-      <Head>
-        <title>Library Management System</title>
-        <meta name="description" content="Welcome to our Library Management System." />
-      </Head>
-
-      <main className="min-h-screen bg-gray-100 text-gray-900">
-        <header className="bg-blue-600 text-white py-6 text-center">
-          <h1 className="text-4xl font-bold">Library Management System</h1>
-        </header>
-
-        <section className="py-10 px-6 md:px-16 lg:px-32">
-          <h2 className="text-2xl font-semibold mb-4">Welcome to Our System</h2>
-          <p className="text-lg mb-6">
-            Our Library Management System helps you manage books, members, and staff efficiently, 
-            making your library operations seamless.
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      {/* Hero Section */}
+      <section className="grid md:grid-cols-2 gap-8 items-center mb-16">
+        <div>
+          <div className="text-indigo-600 font-medium mb-2 text-sm">LIBRARY MANAGEMENT</div>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Simplify Your Library Operations
+          </h1>
+          <p className="text-base text-gray-600 mb-6">
+            Welcome to our Library Management System, a platform designed to help you efficiently 
+            manage books, memberships, and library operations. Whether you're a librarian or a library 
+            member, our system ensures a seamless experience for everyone.
           </p>
-          <h3 className="text-xl font-semibold mb-4">Key Features</h3>
-          <ul className="list-disc list-inside text-lg">
-            <li>Efficient book management with categorization and availability tracking.</li>
-            <li>Member management system with borrowing history and fines calculation.</li>
-            <li>Staff tools for handling book check-in/check-out and inventory updates.</li>
-            <li>Comprehensive reporting and statistics for data-driven decisions.</li>
-          </ul>
-        </section>
+          <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm">
+            Explore Features
+          </button>
+        </div>
+        <div className="rounded-lg overflow-hidden">
+          <img 
+            src="https://img.freepik.com/free-vector/women-library-reading-searching-books_33099-1732.jpg?t=st=1732475937~exp=1732479537~hmac=105d5c217b8c435199e2d56daef6c1bbbe8fbe82bdffd05d306f9ba40efeee67&w=1060" 
+            alt="Bookshelf with organized books" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </section>
 
-        <footer className="bg-gray-800 text-white py-4 text-center">
-          <p>&copy; 2024 Library Management System. All rights reserved.</p>
-        </footer>
-      </main>
-    </>
+      {/* About Section */}
+      <section className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="rounded-lg overflow-hidden">
+          <img 
+            src="https://img.freepik.com/free-vector/young-woman-read-book-public-library-night_107791-27402.jpg?t=st=1732475546~exp=1732479146~hmac=0aae96a9528efaf3158fbff6666f2f1af3d33a3de4f2f024cd3a648b2f2d8eef&w=1060" 
+            alt="People working in a library" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div>
+          <div className="text-indigo-600 font-medium mb-2 text-sm">ABOUT US</div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Empowering Libraries Everywhere
+          </h2>
+          <p className="text-base text-gray-600 mb-6">
+            Our Library Management System streamlines cataloging, borrowing, and member services 
+            for libraries of all sizes. With an intuitive interface and powerful tools, we aim to 
+            enhance the library experience for both staff and patrons.
+          </p>
+          <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm">
+            Learn More About Us
+          </button>
+        </div>
+      </section>
+    </div>
   );
 };
 
