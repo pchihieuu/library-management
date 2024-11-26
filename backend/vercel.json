@@ -7,7 +7,7 @@
       }
     ],
     "env": {
-      "POSTGRES_URL": "@postgres_url"
+      "POSTGRES_URL": "postgres://default:pb5u8wkhFrqo@ep-black-art-a2oz6rns-pooler.eu-central-1.aws.neon.tech:5432/verceldb?sslmode=require"
     }
   }
   
