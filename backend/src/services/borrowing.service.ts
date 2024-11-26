@@ -1,82 +1,68 @@
 import { Borrowing } from '../models/borrowing.entity';
 import { Book } from '../models/book.entity';
-import { BorrowingDto } from '../common/dtos/borrowing.dto';
+import { GenericService } from './generic.service';
 
-export class BorrowingService {
-  async borrowBook(borrowingDto: BorrowingDto): Promise<Borrowing> {
-    const { UserID, BookID, BorrowDate, DueDate } = borrowingDto;
-
-    try {
-      const book = await Book.findByPk(BookID);
-      if (!book) {
-        throw new Error('Book not found.');
-      }
-
-      if (book.AvailableCopies <= 0) {
-        throw new Error('No available copies left to borrow.');
-      }
-
-      const borrowing = await Borrowing.create({
-        UserID,
-        BookID,
-        BorrowDate,
-        DueDate,
-        Renewed: false,
-      });
-
-      book.AvailableCopies -= 1;
-      await book.save();
-
-      return borrowing;
-    } catch (error: any) {
-      throw new Error(`Error borrowing book: ${error.message}`);
-    }
+export class BorrowingService extends GenericService<Borrowing> {
+  constructor() {
+    super(Borrowing);
   }
 
-  async returnBook(borrowingId: string): Promise<Borrowing> {
-    try {
-      const borrowing = await Borrowing.findByPk(borrowingId);
-      if (!borrowing) {
-        throw new Error('Borrowing record not found.');
-      }
+  async borrowBook(userId: string, bookId: string): Promise<Borrowing> {
+    const book = await Book.findByPk(bookId);
 
-      if (borrowing.ReturnDate) {
-        throw new Error('Book has already been returned.');
-      }
-
-      borrowing.ReturnDate = new Date();
-
-      const book = await Book.findByPk(borrowing.BookID);
-      if (book) {
-        book.AvailableCopies += 1;
-        await book.save();
-      }
-
-      await borrowing.save();
-      return borrowing;
-    } catch (error: any) {
-      throw new Error(`Error returning book: ${error.message}`);
+    if (!book) {
+      throw new Error('Book not found.');
     }
+
+    if (book.AvailableCopies <= 0 || book.Status !== 'available') {
+      throw new Error('Book is not available for borrowing.');
+    }
+
+    const borrowing = await this.create({
+      UserID: userId,
+      BookID: bookId,
+      BorrowDate: new Date(),
+      DueDate: new Date(new Date().setDate(new Date().getDate() + 14)), // 14 ngày
+      Renewed: false,
+    });
+
+    book.AvailableCopies -= 1;
+    if (book.AvailableCopies === 0) {
+      book.Status = 'borrowed';
+    }
+    await book.save();
+
+    return borrowing;
   }
 
-  async renewBook(borrowingId: string, newDueDate: Date): Promise<Borrowing> {
-    try {
-      const borrowing = await Borrowing.findByPk(borrowingId);
-      if (!borrowing) {
-        throw new Error('Borrowing record not found.');
-      }
+  async returnBook(userId: string, bookId: string): Promise<Borrowing> {
+    const borrowing = await this.findAll({
+      where: {
+        UserID: userId,
+        BookID: bookId,
+        ReturnDate: null, 
+      },
+    });
 
-      if (borrowing.ReturnDate) {
-        throw new Error('Book has already been returned.');
-      }
-
-      borrowing.DueDate = newDueDate;
-      borrowing.Renewed = true;
-
-      await borrowing.save();
-      return borrowing;
-    } catch (error: any) {
-      throw new Error(`Error renewing book: ${error.message}`);
+    if (borrowing.length === 0) {
+      throw new Error('Borrowing record not found or book already returned.');
     }
+
+    const book = await Book.findByPk(bookId);
+
+    if (!book) {
+      throw new Error('Book not found.');
+    }
+
+    const currentBorrowing = borrowing[0];
+    await currentBorrowing.update({ ReturnDate: new Date() });
+
+    book.AvailableCopies += 1;
+    if (book.Status === 'borrowed' && book.AvailableCopies > 0) {
+      book.Status = 'available';
+    }
+    await book.save();
+
+    return currentBorrowing;
   }
 }

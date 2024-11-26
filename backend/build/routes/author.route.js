@@ -12,11 +12,11 @@ class AuthorRoutes extends base_route_1.default {
         super();
         this.authorController = new author_controller_1.default();
         this.routes = this.routes.bind(this);
-        this.router.get("", this.authorController.findMany.bind(this.authorController));
-        this.router.get("/:id", this.authorController.findOne.bind(this.authorController));
-        this.router.post("", (0, validate_1.default)(author_schema_1.createAuthorSchema), this.authorController.create.bind(this.authorController));
-        this.router.patch("/:id", (0, validate_1.default)(author_schema_1.updateAuthorSchema), this.authorController.update.bind(this.authorController));
-        this.router.delete("/:id", this.authorController.delete.bind(this.authorController));
+        this.router.get('', this.authorController.findMany.bind(this.authorController));
+        this.router.get('/:id', this.authorController.findOne.bind(this.authorController));
+        this.router.post('', (0, validate_1.default)(author_schema_1.createAuthorSchema), this.authorController.create.bind(this.authorController));
+        this.router.patch('/:id', (0, validate_1.default)(author_schema_1.updateAuthorSchema), this.authorController.update.bind(this.authorController));
+        this.router.delete('/:id', this.authorController.delete.bind(this.authorController));
     }
     routes() {
         // Define the routes for this subclass

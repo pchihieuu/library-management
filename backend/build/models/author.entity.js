@@ -52,7 +52,7 @@ __decorate([
 ], Author.prototype, "books", void 0);
 exports.Author = Author = __decorate([
     (0, sequelize_typescript_1.Table)({
-        tableName: "Authors",
+        tableName: 'Authors',
         paranoid: true,
     })
 ], Author);

@@ -1,21 +1,35 @@
-// src/routes/borrowing.routes.ts
+import express, { Request, Response } from 'express';
 import { BorrowingController } from '../controllers/borrowing.controller';
-import BaseRoutes from './base/base.route';
 
-class BorrowingRoutes extends BaseRoutes {
+class BorrowingRoutes {
+  public router = express.Router();
   private borrowingController: BorrowingController;
 
   constructor() {
-    super();
     this.borrowingController = new BorrowingController();
-    this.routes = this.routes.bind(this);
-    this.router.post('/borrow', this.borrowingController.borrowBook.bind(this.borrowingController));
-    this.router.put('/return/:borrowingId', this.borrowingController.returnBook.bind(this.borrowingController));
-    this.router.put('/renew/:borrowingId', this.borrowingController.renewBook.bind(this.borrowingController));
+    this.initRoutes();
   }
 
-  public routes(): void {
-    // All the routes are already defined in the constructor, so nothing needed here
+  /**
+   * Initialize all routes for Borrowing
+   */
+  private initRoutes(): void {
+    this.router.post('/borrow', this.borrowBookHandler.bind(this));
+    this.router.post('/return', this.returnBookHandler.bind(this));
+  }
+
+  /**
+   * Handler for borrowing a book
+   */
+  private borrowBookHandler(req: Request, res: Response): void {
+    this.borrowingController.borrowBook(req, res);
+  }
+
+  /**
+   * Handler for returning a book
+   */
+  private returnBookHandler(req: Request, res: Response): void {
+    this.borrowingController.returnBook(req, res);
   }
 }
 

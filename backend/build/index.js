@@ -40,27 +40,27 @@ class App {
             const db = new database_1.default();
             try {
                 yield ((_a = db.sequelize) === null || _a === void 0 ? void 0 : _a.sync());
-                console.log("✅ Database synchronized successfully.");
+                console.log('🚀 Database synchronized successfully.');
             }
             catch (error) {
-                console.error("❌ Failed to sync the database:", error);
+                console.error('❌ Failed to sync the database:', error);
                 process.exit(1);
             }
         });
     }
     routes() {
-        this.app.route("/").get((req, res) => {
-            res.send("welcome home");
+        this.app.route('/').get((req, res) => {
+            res.send('welcome home');
         });
-        this.app.use("/api/v1/authors", author_route_1.default);
-        this.app.use("/api/v1/borrowing", borrow_route_1.default);
-        this.app.use("/api/v1/books", book_route_1.default);
-        this.app.use("/api/v1/users", user_route_1.default);
-        this.app.use("/api/v1/categories", category_route_1.default);
+        this.app.use('/api/v1/authors', author_route_1.default);
+        this.app.use('/api/v1/borrowing', borrow_route_1.default);
+        this.app.use('/api/v1/books', book_route_1.default);
+        this.app.use('/api/v1/users', user_route_1.default);
+        this.app.use('/api/v1/categories', category_route_1.default);
     }
 }
 const port = 8000;
 const app = new App().app;
 app.listen(port, () => {
-    console.log(`✅ Server started successfully on port ${port}!`);
+    console.log(`🚀 Server started successfully on port ${port}!`);
 });

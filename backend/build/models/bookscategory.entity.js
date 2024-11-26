@@ -34,7 +34,7 @@ __decorate([
 ], BooksCategories.prototype, "deletedAt", void 0);
 exports.BooksCategories = BooksCategories = __decorate([
     (0, sequelize_typescript_1.Table)({
-        tableName: "Books_Categories",
+        tableName: 'Books_Categories',
         paranoid: true,
     })
 ], BooksCategories);

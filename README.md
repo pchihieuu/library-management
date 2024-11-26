@@ -81,7 +81,7 @@ npx sequelize-cli db:migrate
 npm run dev 
 pnpm dev
 ```
-The backend server will run on http://localhost:5000, and the frontend NextJS application will be available at http://localhost:3000.
+The backend server will run on http://localhost:8000, and the frontend NextJS application will be available at http://localhost:3000.
 
 ## API Documentation
 The API is documented using Postman. You can explore and test the available API endpoints via the following link:

@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { BorrowingService } from '../services/borrowing.service';
-import { BorrowingDto } from '../common/dtos/borrowing.dto';
 
 export class BorrowingController {
   private borrowingService: BorrowingService;
@@ -9,34 +8,31 @@ export class BorrowingController {
     this.borrowingService = new BorrowingService();
   }
 
-  borrowBook = async (req: Request, res: Response): Promise<void> => {
-    try {
-      const borrowingDto: BorrowingDto = req.body;
-      const newBorrowing = await this.borrowingService.borrowBook(borrowingDto);
-      res.status(201).json(newBorrowing);
-    } catch (err: any) {
-      res.status(400).json({ message: err.message });
-    }
-  };
+  async borrowBook(req: Request, res: Response): Promise<void> {
+    const { userId, bookId } = req.body;
 
-  returnBook = async (req: Request, res: Response): Promise<void> => {
     try {
-      const { borrowingId } = req.params;
-      const updatedBorrowing = await this.borrowingService.returnBook(borrowingId);
-      res.status(200).json(updatedBorrowing);
-    } catch (err: any) {
-      res.status(400).json({ message: err.message });
+      const borrowing = await this.borrowingService.borrowBook(userId, bookId);
+      res.status(200).json({
+        message: 'Book borrowed successfully',
+        data: borrowing,
+      });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
     }
-  };
+  }
 
-  renewBook = async (req: Request, res: Response): Promise<void> => {
+  async returnBook(req: Request, res: Response): Promise<void> {
+    const { userId, bookId } = req.body;
+
     try {
-      const { borrowingId } = req.params;
-      const { newDueDate } = req.body;
-      const updatedBorrowing = await this.borrowingService.renewBook(borrowingId, newDueDate);
-      res.status(200).json(updatedBorrowing);
-    } catch (err: any) {
-      res.status(400).json({ message: err.message });
+      const borrowing = await this.borrowingService.returnBook(userId, bookId);
+      res.status(200).json({
+        message: 'Book returned successfully',
+        data: borrowing,
+      });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
     }
-  };
+  }
 }

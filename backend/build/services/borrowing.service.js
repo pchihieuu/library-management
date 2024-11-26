@@ -12,76 +12,59 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BorrowingService = void 0;
 const borrowing_entity_1 = require("../models/borrowing.entity");
 const book_entity_1 = require("../models/book.entity");
-class BorrowingService {
-    borrowBook(borrowingDto) {
+const generic_service_1 = require("./generic.service");
+class BorrowingService extends generic_service_1.GenericService {
+    constructor() {
+        super(borrowing_entity_1.Borrowing);
+    }
+    borrowBook(userId, bookId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { UserID, BookID, BorrowDate, DueDate } = borrowingDto;
-            try {
-                const book = yield book_entity_1.Book.findByPk(BookID);
-                if (!book) {
-                    throw new Error("Book not found.");
-                }
-                if (book.AvailableCopies <= 0) {
-                    throw new Error("No available copies left to borrow.");
-                }
-                const borrowing = yield borrowing_entity_1.Borrowing.create({
-                    UserID,
-                    BookID,
-                    BorrowDate,
-                    DueDate,
-                    Renewed: false,
-                });
-                book.AvailableCopies -= 1;
-                yield book.save();
-                return borrowing;
+            const book = yield book_entity_1.Book.findByPk(bookId);
+            if (!book) {
+                throw new Error('Book not found.');
             }
-            catch (error) {
-                throw new Error(`Error borrowing book: ${error.message}`);
+            if (book.AvailableCopies <= 0 || book.Status !== 'available') {
+                throw new Error('Book is not available for borrowing.');
             }
+            const borrowing = yield this.create({
+                UserID: userId,
+                BookID: bookId,
+                BorrowDate: new Date(),
+                DueDate: new Date(new Date().setDate(new Date().getDate() + 14)), // 14 ngày
+                Renewed: false,
+            });
+            book.AvailableCopies -= 1;
+            if (book.AvailableCopies === 0) {
+                book.Status = 'borrowed';
+            }
+            yield book.save();
+            return borrowing;
         });
     }
-    returnBook(borrowingId) {
+    returnBook(userId, bookId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const borrowing = yield borrowing_entity_1.Borrowing.findByPk(borrowingId);
-                if (!borrowing) {
-                    throw new Error("Borrowing record not found.");
-                }
-                if (borrowing.ReturnDate) {
-                    throw new Error("Book has already been returned.");
-                }
-                borrowing.ReturnDate = new Date();
-                const book = yield book_entity_1.Book.findByPk(borrowing.BookID);
-                if (book) {
-                    book.AvailableCopies += 1;
-                    yield book.save();
-                }
-                yield borrowing.save();
-                return borrowing;
+            const borrowing = yield this.findAll({
+                where: {
+                    UserID: userId,
+                    BookID: bookId,
+                    ReturnDate: null,
+                },
+            });
+            if (borrowing.length === 0) {
+                throw new Error('Borrowing record not found or book already returned.');
             }
-            catch (error) {
-                throw new Error(`Error returning book: ${error.message}`);
+            const book = yield book_entity_1.Book.findByPk(bookId);
+            if (!book) {
+                throw new Error('Book not found.');
             }
-        });
-    }
-    renewBook(borrowingId, newDueDate) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const borrowing = yield borrowing_entity_1.Borrowing.findByPk(borrowingId);
-                if (!borrowing) {
-                    throw new Error("Borrowing record not found.");
-                }
-                if (borrowing.ReturnDate) {
-                    throw new Error("Book has already been returned.");
-                }
-                borrowing.DueDate = newDueDate;
-                borrowing.Renewed = true;
-                yield borrowing.save();
-                return borrowing;
+            const currentBorrowing = borrowing[0];
+            yield currentBorrowing.update({ ReturnDate: new Date() });
+            book.AvailableCopies += 1;
+            if (book.Status === 'borrowed' && book.AvailableCopies > 0) {
+                book.Status = 'available';
             }
-            catch (error) {
-                throw new Error(`Error renewing book: ${error.message}`);
-            }
+            yield book.save();
+            return currentBorrowing;
         });
     }
 }

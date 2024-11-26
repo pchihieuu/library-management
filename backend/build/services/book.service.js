@@ -22,7 +22,7 @@ class BookService extends generic_service_1.GenericService {
                 const authors = yield this.findAll({
                     where: {
                         Title: title,
-                    }
+                    },
                 });
                 return authors;
             }

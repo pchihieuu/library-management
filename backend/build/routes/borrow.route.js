@@ -3,20 +3,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// src/routes/borrowing.routes.ts
+const express_1 = __importDefault(require("express"));
 const borrowing_controller_1 = require("../controllers/borrowing.controller");
-const base_route_1 = __importDefault(require("./base/base.route"));
-class BorrowingRoutes extends base_route_1.default {
+class BorrowingRoutes {
     constructor() {
-        super();
+        this.router = express_1.default.Router();
         this.borrowingController = new borrowing_controller_1.BorrowingController();
-        this.routes = this.routes.bind(this);
-        this.router.post("/borrow", this.borrowingController.borrowBook.bind(this.borrowingController));
-        this.router.put("/return/:borrowingId", this.borrowingController.returnBook.bind(this.borrowingController));
-        this.router.put("/renew/:borrowingId", this.borrowingController.renewBook.bind(this.borrowingController));
+        this.initRoutes();
     }
-    routes() {
-        // All the routes are already defined in the constructor, so nothing needed here
+    /**
+     * Initialize all routes for Borrowing
+     */
+    initRoutes() {
+        this.router.post('/borrow', this.borrowBookHandler.bind(this));
+        this.router.post('/return', this.returnBookHandler.bind(this));
+    }
+    /**
+     * Handler for borrowing a book
+     */
+    borrowBookHandler(req, res) {
+        this.borrowingController.borrowBook(req, res);
+    }
+    /**
+     * Handler for returning a book
+     */
+    returnBookHandler(req, res) {
+        this.borrowingController.returnBook(req, res);
     }
 }
 exports.default = new BorrowingRoutes().router;

@@ -72,7 +72,7 @@ __decorate([
 ], Borrowing.prototype, "book", void 0);
 exports.Borrowing = Borrowing = __decorate([
     (0, sequelize_typescript_1.Table)({
-        tableName: "Borrowings",
+        tableName: 'Borrowings',
         paranoid: true,
     })
 ], Borrowing);

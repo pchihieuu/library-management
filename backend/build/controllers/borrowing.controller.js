@@ -13,38 +13,37 @@ exports.BorrowingController = void 0;
 const borrowing_service_1 = require("../services/borrowing.service");
 class BorrowingController {
     constructor() {
-        this.borrowBook = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                const borrowingDto = req.body;
-                const newBorrowing = yield this.borrowingService.borrowBook(borrowingDto);
-                res.status(201).json(newBorrowing);
-            }
-            catch (err) {
-                res.status(400).json({ message: err.message });
-            }
-        });
-        this.returnBook = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { borrowingId } = req.params;
-                const updatedBorrowing = yield this.borrowingService.returnBook(borrowingId);
-                res.status(200).json(updatedBorrowing);
-            }
-            catch (err) {
-                res.status(400).json({ message: err.message });
-            }
-        });
-        this.renewBook = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { borrowingId } = req.params;
-                const { newDueDate } = req.body;
-                const updatedBorrowing = yield this.borrowingService.renewBook(borrowingId, newDueDate);
-                res.status(200).json(updatedBorrowing);
-            }
-            catch (err) {
-                res.status(400).json({ message: err.message });
-            }
-        });
         this.borrowingService = new borrowing_service_1.BorrowingService();
+    }
+    borrowBook(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { userId, bookId } = req.body;
+            try {
+                const borrowing = yield this.borrowingService.borrowBook(userId, bookId);
+                res.status(200).json({
+                    message: 'Book borrowed successfully',
+                    data: borrowing,
+                });
+            }
+            catch (error) {
+                res.status(400).json({ error: error.message });
+            }
+        });
+    }
+    returnBook(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { userId, bookId } = req.body;
+            try {
+                const borrowing = yield this.borrowingService.returnBook(userId, bookId);
+                res.status(200).json({
+                    message: 'Book returned successfully',
+                    data: borrowing,
+                });
+            }
+            catch (error) {
+                res.status(400).json({ error: error.message });
+            }
+        });
     }
 }
 exports.BorrowingController = BorrowingController;

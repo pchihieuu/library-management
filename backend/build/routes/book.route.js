@@ -10,11 +10,11 @@ class BookRoutes extends base_route_1.default {
         super();
         this.bookController = new book_controller_1.BookController();
         this.routes = this.routes.bind(this);
-        this.router.get("", this.bookController.findMany.bind(this.bookController));
-        this.router.get("/:id", this.bookController.findOne.bind(this.bookController));
-        this.router.post("", this.bookController.create.bind(this.bookController));
-        this.router.patch("/:id", this.bookController.update.bind(this.bookController));
-        this.router.delete("/:id", this.bookController.delete.bind(this.bookController));
+        this.router.get('', this.bookController.findMany.bind(this.bookController));
+        this.router.get('/:id', this.bookController.findOne.bind(this.bookController));
+        this.router.post('', this.bookController.create.bind(this.bookController));
+        this.router.patch('/:id', this.bookController.update.bind(this.bookController));
+        this.router.delete('/:id', this.bookController.delete.bind(this.bookController));
     }
     routes() {
         // Define the routes for this subclass

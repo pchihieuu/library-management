@@ -21,8 +21,8 @@ class AuthorService extends generic_service_1.GenericService {
             try {
                 const authors = yield this.findAll({
                     where: {
-                        FullName: fullName
-                    }
+                        FullName: fullName,
+                    },
                 });
                 return authors;
             }

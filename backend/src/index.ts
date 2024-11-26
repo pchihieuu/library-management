@@ -32,7 +32,7 @@ class App {
     const db = new Database();
     try {
       await db.sequelize?.sync();
-      console.log('✅ Database synchronized successfully.');
+      console.log('🚀 Database synchronized successfully.');
     } catch (error) {
       console.error('❌ Failed to sync the database:', error);
       process.exit(1);
