@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "src/index.ts",
+        "use": "@vercel/node"
+      }
+    ],
+    "env": {
+      "POSTGRES_URL": "@postgres_url"
+    }
+  }
+  

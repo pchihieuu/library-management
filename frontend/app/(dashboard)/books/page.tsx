@@ -137,9 +137,9 @@ export default function BookPage() {
     return <p>Loading books...</p>;
   }
 
-  if (books.length === 0) {
-    return <p>No books available.</p>;
-  }
+  // if (books.length === 0) {
+  //   return <p>No books available.</p>;
+  // }
 
   return (
     <main className="container mx-auto p-4">

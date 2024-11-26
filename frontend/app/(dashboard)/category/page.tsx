@@ -130,9 +130,9 @@ export default function CategoryPage() {
     return <p>Loading categories...</p>;
   }
 
-  if (categories.length === 0) {
-    return <p>No categories available.</p>;
-  }
+  // if (categories.length === 0) {
+  //   return <p>No categories available.</p>;
+  // }
 
   return (
     <main className="container mx-auto p-4">

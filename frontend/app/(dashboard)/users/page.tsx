@@ -147,9 +147,9 @@ export default function UserPage() {
     return <p>Loading users...</p>;
   }
 
-  if (users.length === 0) {
-    return <p>No users available.</p>;
-  }
+  // if (users.length === 0) {
+  //   return <p>No users available.</p>;
+  // }
 
   return (
     <main className="container mx-auto p-4">

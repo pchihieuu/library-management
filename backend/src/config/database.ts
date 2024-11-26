@@ -8,53 +8,51 @@ import { Borrowing } from '../models/borrowing.entity';
 import { Category } from '../models/category.entity';
 import { User } from '../models/user.entity';
 
+// Load environment variables từ file .env
 dotenv.config();
 
 class Database {
-  public sequelize: Sequelize | undefined;
-
-  private POSTGRES_DB: string;
-  private POSTGRES_HOST: string;
-  private POSTGRES_PORT: number;
-  private POSTGRES_USER: string;
-  private POSTGRES_PASSWORD: string;
+  public sequelize: Sequelize | undefined; // Sequelize instance sẽ được khởi tạo trong hàm connectToPostgreSQL
 
   constructor() {
-    // Fetching environment variables with proper types
-    this.POSTGRES_DB = process.env.POSTGRES_DB || '';
-    this.POSTGRES_HOST = process.env.POSTGRES_HOST || '';
-    this.POSTGRES_PORT = Number(process.env.POSTGRES_PORT) || 5432; // Default to 5432 if no port is specified
-    this.POSTGRES_USER = process.env.POSTGRES_USER || '';
-    this.POSTGRES_PASSWORD = process.env.POSTGRES_PASSWORD || '';
-
-    // Initialize the database connection
-    this.connectToPostgreSQL();
+    this.connectToPostgreSQL(); // Tự động kết nối PostgreSQL khi lớp được khởi tạo
   }
 
   private async connectToPostgreSQL() {
-    // Check if the required environment variables are available
-    if (!this.POSTGRES_DB || !this.POSTGRES_HOST || !this.POSTGRES_USER || !this.POSTGRES_PASSWORD) {
-      console.error('❌ Missing required environment variables.');
+    // Lấy URL kết nối từ file .env
+    const { POSTGRES_URL } = process.env;
+
+    if (!POSTGRES_URL) {
+      console.error('❌ POSTGRES_URL is missing in environment variables.');
       return;
     }
 
-    // Initialize Sequelize instance
-    this.sequelize = new Sequelize({
-      database: this.POSTGRES_DB,
-      username: this.POSTGRES_USER,
-      password: this.POSTGRES_PASSWORD,
-      host: this.POSTGRES_HOST,
-      port: this.POSTGRES_PORT,
-      dialect: 'postgres',
-      models: [Book, Author, BooksAuthors, BooksCategories, Borrowing, Category, User],
-    });
-
-    // Authenticate the connection
     try {
+      // Khởi tạo Sequelize với các cài đặt cần thiết
+      this.sequelize = new Sequelize(POSTGRES_URL, {
+        dialect: 'postgres',
+        dialectOptions: {
+          ssl: {
+            require: true, // Vercel yêu cầu SSL kết nối
+            rejectUnauthorized: false, // Cho phép chứng chỉ tự ký
+          },
+        },
+        models: [
+          Book,
+          Author,
+          BooksAuthors,
+          BooksCategories,
+          Borrowing,
+          Category,
+          User,
+        ], // Tự động ánh xạ các model
+      });
+
+      // Kiểm tra kết nối đến cơ sở dữ liệu
       await this.sequelize.authenticate();
       console.log('✅ PostgreSQL Connection has been established successfully.');
-    } catch (err) {
-      console.error('❌ Unable to connect to the PostgreSQL database:', err);
+    } catch (err: any) {
+      console.error('❌ Unable to connect to the PostgreSQL database:', err.message);
     }
   }
 }

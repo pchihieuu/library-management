@@ -118,9 +118,9 @@ export default function Author() {
     return <p>Loading authors...</p>;
   }
 
-  if (authors.length === 0) {
-    return <p>No authors available.</p>;
-  }
+  // if (authors.length === 0) {
+  //   return <p>No authors available.</p>;
+  // }
 
   return (
     <main className="container mx-auto p-4">

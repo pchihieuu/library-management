@@ -5,8 +5,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "nodemon ./build/index.js",
-    "start-dev": "tsc && npm dev",
-    "prepare": "husky install"
+    "start-dev": "tsc && npm dev"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.0",
