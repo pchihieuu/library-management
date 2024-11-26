@@ -1,66 +1,19 @@
-# Node.js dependencies
-/node_modules/
+# Ignore node_modules folder
+node_modules/
 
-# TypeScript build output
-/dist/
-/build/
+# Ignore build/dist folders
+dist/
+build/
+
+# Ignore environment files
+.env
+.env.local
+.env.*.local
 
 # Logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Dependency directories
-/pnpm-lock.yaml
-
-# VSCode settings (if using VSCode)
-.vscode/
-
-# System files (Mac, Windows, Linux)
-.DS_Store         # macOS
-Thumbs.db         # Windows
-desktop.ini       # Windows
-
-# OS generated files
-ehthumbs.db
-Icon?
-.DS_Store
-
-# IDE/Editor files (for IntelliJ, JetBrains)
-.idea/
-
-# macOS Finder directory metadata
-.AppleDouble
-.LSOverride
-
-# Environment variable files
-.env
-.env.*.local
-
-# Build/compiled files
-*.exe
-*.dll
-*.pdb
-*.app
-*.dmg
-*.iso
-*.7z
-*.tar.gz
-
-# TypeScript declaration files
-*.d.ts
-
-# Generated files
-*.tgz
-*.zip
-*.tar
-*.tar.gz
-*.rar
-
-# Ignore test reports (if you have testing set up)
-coverage/
-
-# Ignore ESLint and Prettier config if you don't want them tracked
-.eslintrc.js
-.prettierrc.js
+# Vercel related
+.vercel/
