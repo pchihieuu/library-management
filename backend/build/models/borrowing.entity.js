@@ -15,7 +15,6 @@ const user_entity_1 = require("./user.entity");
 const book_entity_1 = require("./book.entity");
 let Borrowing = class Borrowing extends sequelize_typescript_1.Model {
 };
-exports.Borrowing = Borrowing;
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.UUID,
@@ -70,9 +69,10 @@ __decorate([
     (0, sequelize_typescript_1.BelongsTo)(() => book_entity_1.Book),
     __metadata("design:type", book_entity_1.Book)
 ], Borrowing.prototype, "book", void 0);
-exports.Borrowing = Borrowing = __decorate([
+Borrowing = __decorate([
     (0, sequelize_typescript_1.Table)({
         tableName: 'Borrowings',
         paranoid: true,
     })
 ], Borrowing);
+exports.Borrowing = Borrowing;

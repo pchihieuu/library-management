@@ -20,7 +20,6 @@ class UserDto {
         // this.borrowings = user.borrowings?.map((borrowing) => new BorrowingDto(borrowing));
     }
 }
-exports.UserDto = UserDto;
 __decorate([
     (0, class_validator_1.IsUUID)(),
     __metadata("design:type", String)
@@ -43,3 +42,4 @@ __decorate([
     (0, class_validator_1.IsDate)(),
     __metadata("design:type", Date)
 ], UserDto.prototype, "deletedAt", void 0);
+exports.UserDto = UserDto;

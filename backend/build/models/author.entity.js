@@ -15,7 +15,6 @@ const book_entity_1 = require("./book.entity");
 const booksauthor_entity_1 = require("./booksauthor.entity");
 let Author = class Author extends sequelize_typescript_1.Model {
 };
-exports.Author = Author;
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.UUID,
@@ -50,9 +49,10 @@ __decorate([
     (0, sequelize_typescript_1.BelongsToMany)(() => book_entity_1.Book, () => booksauthor_entity_1.BooksAuthors),
     __metadata("design:type", Array)
 ], Author.prototype, "books", void 0);
-exports.Author = Author = __decorate([
+Author = __decorate([
     (0, sequelize_typescript_1.Table)({
         tableName: 'Authors',
         paranoid: true,
     })
 ], Author);
+exports.Author = Author;

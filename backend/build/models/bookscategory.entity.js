@@ -15,7 +15,6 @@ const category_entity_1 = require("./category.entity");
 const book_entity_1 = require("./book.entity");
 let BooksCategories = class BooksCategories extends sequelize_typescript_1.Model {
 };
-exports.BooksCategories = BooksCategories;
 __decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => book_entity_1.Book),
     __metadata("design:type", String)
@@ -32,9 +31,10 @@ __decorate([
     }),
     __metadata("design:type", Date)
 ], BooksCategories.prototype, "deletedAt", void 0);
-exports.BooksCategories = BooksCategories = __decorate([
+BooksCategories = __decorate([
     (0, sequelize_typescript_1.Table)({
         tableName: 'Books_Categories',
         paranoid: true,
     })
 ], BooksCategories);
+exports.BooksCategories = BooksCategories;

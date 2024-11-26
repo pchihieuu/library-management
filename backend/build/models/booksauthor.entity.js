@@ -15,7 +15,6 @@ const book_entity_1 = require("./book.entity");
 const author_entity_1 = require("./author.entity");
 let BooksAuthors = class BooksAuthors extends sequelize_typescript_1.Model {
 };
-exports.BooksAuthors = BooksAuthors;
 __decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => book_entity_1.Book),
     __metadata("design:type", String)
@@ -32,8 +31,9 @@ __decorate([
     }),
     __metadata("design:type", Date)
 ], BooksAuthors.prototype, "deletedAt", void 0);
-exports.BooksAuthors = BooksAuthors = __decorate([
+BooksAuthors = __decorate([
     (0, sequelize_typescript_1.Table)({
         tableName: 'Books_Authors',
     })
 ], BooksAuthors);
+exports.BooksAuthors = BooksAuthors;

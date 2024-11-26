@@ -15,7 +15,6 @@ const book_entity_1 = require("./book.entity");
 const bookscategory_entity_1 = require("./bookscategory.entity");
 let Category = class Category extends sequelize_typescript_1.Model {
 };
-exports.Category = Category;
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.UUID,
@@ -51,9 +50,10 @@ __decorate([
     (0, sequelize_typescript_1.BelongsToMany)(() => book_entity_1.Book, () => bookscategory_entity_1.BooksCategories),
     __metadata("design:type", Array)
 ], Category.prototype, "books", void 0);
-exports.Category = Category = __decorate([
+Category = __decorate([
     (0, sequelize_typescript_1.Table)({
         tableName: 'Categories',
         paranoid: true,
     })
 ], Category);
+exports.Category = Category;

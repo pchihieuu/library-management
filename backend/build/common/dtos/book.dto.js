@@ -28,7 +28,6 @@ class BookDto {
         this.categories = book.categories ? book.categories.map(category => new category_dto_1.CategoryDto(category)) : [];
     }
 }
-exports.BookDto = BookDto;
 __decorate([
     (0, class_validator_1.IsUUID)(),
     __metadata("design:type", String)
@@ -73,3 +72,4 @@ __decorate([
     (0, class_validator_1.IsArray)(),
     __metadata("design:type", Array)
 ], BookDto.prototype, "categories", void 0);
+exports.BookDto = BookDto;

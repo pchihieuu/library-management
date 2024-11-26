@@ -30,7 +30,7 @@ class BorrowingService extends generic_service_1.GenericService {
                 UserID: userId,
                 BookID: bookId,
                 BorrowDate: new Date(),
-                DueDate: new Date(new Date().setDate(new Date().getDate() + 14)), // 14 ngày
+                DueDate: new Date(new Date().setDate(new Date().getDate() + 14)),
                 Renewed: false,
             });
             book.AvailableCopies -= 1;

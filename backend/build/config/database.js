@@ -41,28 +41,25 @@ const bookscategory_entity_1 = require("../models/bookscategory.entity");
 const borrowing_entity_1 = require("../models/borrowing.entity");
 const category_entity_1 = require("../models/category.entity");
 const user_entity_1 = require("../models/user.entity");
-// Load environment variables từ file .env
 dotenv.config();
 class Database {
     constructor() {
-        this.connectToPostgreSQL(); // Tự động kết nối PostgreSQL khi lớp được khởi tạo
+        this.connectToPostgreSQL();
     }
     connectToPostgreSQL() {
         return __awaiter(this, void 0, void 0, function* () {
-            // Lấy URL kết nối từ file .env
             const { POSTGRES_URL } = process.env;
             if (!POSTGRES_URL) {
                 console.error('❌ POSTGRES_URL is missing in environment variables.');
                 return;
             }
             try {
-                // Khởi tạo Sequelize với các cài đặt cần thiết
                 this.sequelize = new sequelize_typescript_1.Sequelize(POSTGRES_URL, {
                     dialect: 'postgres',
                     dialectOptions: {
                         ssl: {
-                            require: true, // Vercel yêu cầu SSL kết nối
-                            rejectUnauthorized: false, // Cho phép chứng chỉ tự ký
+                            require: true,
+                            rejectUnauthorized: false,
                         },
                     },
                     models: [
@@ -73,9 +70,8 @@ class Database {
                         borrowing_entity_1.Borrowing,
                         category_entity_1.Category,
                         user_entity_1.User,
-                    ], // Tự động ánh xạ các model
+                    ],
                 });
-                // Kiểm tra kết nối đến cơ sở dữ liệu
                 yield this.sequelize.authenticate();
                 console.log('✅ PostgreSQL Connection has been established successfully.');
             }

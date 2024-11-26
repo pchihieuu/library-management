@@ -13,7 +13,6 @@ exports.BorrowingDto = void 0;
 const class_validator_1 = require("class-validator");
 class BorrowingDto {
 }
-exports.BorrowingDto = BorrowingDto;
 __decorate([
     (0, class_validator_1.IsUUID)(),
     __metadata("design:type", String)
@@ -48,3 +47,4 @@ __decorate([
     (0, class_validator_1.IsDate)(),
     __metadata("design:type", Date)
 ], BorrowingDto.prototype, "deletedAt", void 0);
+exports.BorrowingDto = BorrowingDto;

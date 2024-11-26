@@ -17,7 +17,6 @@ class BooksAuthorsDto {
         this.AuthorID = data.AuthorID;
     }
 }
-exports.BooksAuthorsDto = BooksAuthorsDto;
 __decorate([
     (0, class_validator_1.IsUUID)(),
     __metadata("design:type", String)
@@ -26,3 +25,4 @@ __decorate([
     (0, class_validator_1.IsUUID)(),
     __metadata("design:type", String)
 ], BooksAuthorsDto.prototype, "AuthorID", void 0);
+exports.BooksAuthorsDto = BooksAuthorsDto;

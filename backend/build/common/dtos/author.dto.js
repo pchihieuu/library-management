@@ -22,7 +22,6 @@ class AuthorDto {
         this.books = (_a = author.books) === null || _a === void 0 ? void 0 : _a.map(book => new book_dto_1.BookDto(book));
     }
 }
-exports.AuthorDto = AuthorDto;
 __decorate([
     (0, class_validator_1.IsUUID)(),
     __metadata("design:type", String)
@@ -41,3 +40,4 @@ __decorate([
     (0, class_validator_1.IsArray)(),
     __metadata("design:type", Array)
 ], AuthorDto.prototype, "books", void 0);
+exports.AuthorDto = AuthorDto;
