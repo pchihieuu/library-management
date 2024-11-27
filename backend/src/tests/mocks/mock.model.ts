@@ -12,5 +12,12 @@ export class MockModel {
     static create = jest.fn();
     static update = jest.fn();
     static destroy = jest.fn();
+
+    get dataValues() {
+        return {
+            id: this.id,
+            name: this.name,
+        }
+    }
   }
   
