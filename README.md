@@ -75,8 +75,13 @@ Make sure PostgreSQL is running and execute the migrations to set up the databas
 ```bash
 npx sequelize-cli db:migrate
 ```
+### 6. Build the application
+```bash
+npm run build
+pnpm build
+```
 
-### 6. Run the application
+### 7. Run the application
 ```bash
 npm run dev 
 pnpm dev
