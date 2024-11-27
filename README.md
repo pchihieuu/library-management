@@ -60,7 +60,7 @@ cd frontend
 npm install
 pnpm install
 ```
-## 4. Set up environment variables
+### 4. Set up environment variables
 
 Create a .env file in the root directory and configure your PostgreSQL credentials:
 ```bash
