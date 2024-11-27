@@ -7,7 +7,6 @@ export class MockModel {
       this.name = name;
     }
   
-    // Mock Sequelize-specific methods if needed
     static findAll = jest.fn();
     static findByPk = jest.fn();
     static create = jest.fn();

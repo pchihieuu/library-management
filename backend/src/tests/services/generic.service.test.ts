@@ -21,7 +21,6 @@ describe('GenericService', () => {
   });
 
   test('should fetch all entities', async () => {
-    // Mock entities as instances of MockModel
     const mockEntities = [
       Object.assign(new MockModel(), { id: 1, name: 'Test 1', dataValues: { id: 1, name: 'Test 1' } }),
       Object.assign(new MockModel(), { id: 2, name: 'Test 2', dataValues: { id: 2, name: 'Test 2' } }),

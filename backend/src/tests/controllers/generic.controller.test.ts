@@ -1,4 +1,3 @@
-// Mocked model
 import { GenericService } from '../../services/generic.service';
 import { GenericController } from '../../controllers/generic.controller';
 import { Request, Response, NextFunction } from 'express';
@@ -25,7 +24,7 @@ describe('GenericController', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks(); // Clear all mocks after each test
+    jest.clearAllMocks();
   });
 
   it('should call findMany and return items', async () => {
@@ -51,5 +50,4 @@ describe('GenericController', () => {
     expect(mockResponse.json).toHaveBeenCalledWith(newItem);
   });
 
-  // More test cases...
 });
