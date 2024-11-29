@@ -13,7 +13,6 @@ describe('UserDto', () => {
 
     const userDto = new UserDto(validUserData);
 
-    // Validate UserDto fields
     expect(userDto.UserID).toBe(validUserData.UserID);
     expect(userDto.FullName).toBe(validUserData.FullName);
     expect(userDto.Email).toBe(validUserData.Email);
@@ -22,7 +21,7 @@ describe('UserDto', () => {
 
   it('should reject invalid UUID for UserID', async () => {
     const invalidUserData: IUser = {
-      UserID: 'invalid-uuid', // Invalid UUID
+      UserID: 'invalid-uuid',
       FullName: 'John Doe',
       Email: 'johndoe@example.com',
       Role: 'Admin'
@@ -31,7 +30,7 @@ describe('UserDto', () => {
     const userDto = new UserDto(invalidUserData);
     
     const errors = await validate(userDto);
-    expect(errors.length).toBeGreaterThan(0);  // Expect validation errors
+    expect(errors.length).toBeGreaterThan(0);
     expect(errors[0].property).toBe('UserID');
   });
 
@@ -39,14 +38,14 @@ describe('UserDto', () => {
     const invalidEmailData: IUser = {
       UserID: 'dcbf3b4c-bdd2-477f-a5ab-e6b5b11f3f8d',
       FullName: 'John Doe',
-      Email: 'invalid-email', // Invalid email format
+      Email: 'invalid-email',
       Role: 'Admin'
     };
 
     const userDto = new UserDto(invalidEmailData);
     
     const errors = await validate(userDto);
-    expect(errors.length).toBeGreaterThan(0);  // Expect validation errors
+    expect(errors.length).toBeGreaterThan(0); 
     expect(errors[0].property).toBe('Email');
     expect(errors[0].constraints?.isEmail).toBe('Email must be an email');
   });
@@ -56,13 +55,13 @@ describe('UserDto', () => {
       UserID: 'dcbf3b4c-bdd2-477f-a5ab-e6b5b11f3f8d',
       FullName: 'John Doe',
       Email: 'johndoe@example.com',
-      Role: 'InvalidRole' // Invalid role
+      Role: 'InvalidRole' 
     };
 
     const userDto = new UserDto(invalidRoleData);
     
     const errors = await validate(userDto);
-    expect(errors.length).toBeGreaterThan(0);  // Expect validation errors
+    expect(errors.length).toBeGreaterThan(0);  
     expect(errors[0].property).toBe('Role');
     expect(errors[0].constraints?.isIn).toBe('Role must be one of the following values: Admin, Guest, Member');
   });
@@ -89,11 +88,10 @@ describe('UserDto', () => {
       FullName: 'John Doe',
       Email: 'johndoe@example.com',
       Role: 'Member',
-      // No deletedAt field provided
     };
 
     const userDto = new UserDto(userDataWithoutOptionalField);
 
-    expect(userDto.deletedAt).toBeUndefined(); // Ensure deletedAt is undefined
+    expect(userDto.deletedAt).toBeUndefined(); 
   });
 });

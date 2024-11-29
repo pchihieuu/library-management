@@ -1,10 +1,8 @@
 import { Model, ModelStatic } from 'sequelize';
 import { GenericService } from '../../services/generic.service';
 
-
-
 class MockModel extends Model {
-  name!: string; // Thêm thuộc tính mẫu để tránh lỗi
+  name!: string;
 }
 
 const mockModelStatic: Partial<ModelStatic<MockModel>> = {

@@ -2,8 +2,6 @@ import { Book } from "../../models/book.entity";
 import { Borrowing } from "../../models/borrowing.entity";
 import { BorrowingService } from "../../services/borrowing.service";
 
-
-// Mock Book và Borrowing models
 jest.mock('../../models/book.entity');
 jest.mock('../../models/borrowing.entity');
 
@@ -32,10 +30,8 @@ describe('BorrowingService', () => {
         save: jest.fn(),
       };
       
-      // Mock Book.findByPk
       mockBook.findByPk.mockResolvedValue(mockBookData);
 
-      // Mock this.create method
       mockBorrowing.create.mockResolvedValue({
         UserID: userId,
         BookID: bookId,
@@ -48,8 +44,8 @@ describe('BorrowingService', () => {
 
       expect(result.UserID).toBe(userId);
       expect(result.BookID).toBe(bookId);
-      expect(mockBookData.save).toHaveBeenCalledTimes(1);  // Ensure book's save method was called
-      expect(mockBorrowing.create).toHaveBeenCalledTimes(1);  // Ensure borrowing was created
+      expect(mockBookData.save).toHaveBeenCalledTimes(1);  
+      expect(mockBorrowing.create).toHaveBeenCalledTimes(1);
     });
 
     it('should throw error if book is not found', async () => {
@@ -88,49 +84,41 @@ describe('BorrowingService', () => {
       const userId = 'user123';
       const bookId = 'book123';
   
-      // Mock Borrowing record with explicit type
       const mockBorrowingData: MockBorrowing[] = [
         {
           UserID: userId,
           BookID: bookId,
           ReturnDate: null,
           update: jest.fn().mockImplementation((updateData: any) => {
-            // Directly modify ReturnDate instead of using 'this'
             mockBorrowingData[0].ReturnDate = updateData.ReturnDate;
-            return mockBorrowingData[0]; // Return updated mock object
+            return mockBorrowingData[0];
           }),
         },
       ];
   
-      // Mock Book data
       const mockBookData = {
         AvailableCopies: 0,
         Status: 'borrowed',
         save: jest.fn(),
       };
-  
-      // Mock Book findByPk and Borrowing findAll methods
+
       mockBook.findByPk.mockResolvedValue(mockBookData);
       mockBorrowing.findAll.mockResolvedValue(mockBorrowingData);
   
-      // Call the returnBook method
       const result = await borrowingService.returnBook(userId, bookId);
   
-      // Assertions
-      expect(result.ReturnDate).not.toBeNull(); // Ensure the book is marked as returned
-      expect(result.ReturnDate).toBeInstanceOf(Date); // Ensure ReturnDate is a Date object
-      expect(mockBookData.save).toHaveBeenCalledTimes(1); // Ensure book's save method was called
-      expect(mockBorrowingData[0].update).toHaveBeenCalledTimes(1); // Ensure borrowing's update method was called
+      expect(result.ReturnDate).not.toBeNull(); 
+      expect(result.ReturnDate).toBeInstanceOf(Date); 
+      expect(mockBookData.save).toHaveBeenCalledTimes(1); 
+      expect(mockBorrowingData[0].update).toHaveBeenCalledTimes(1);
     });
   
     it('should throw error if borrowing record not found', async () => {
       const userId = 'user123';
       const bookId = 'book123';
   
-      // Mock the findAll method to return an empty array
       mockBorrowing.findAll.mockResolvedValue([]);
   
-      // Expect the function to throw an error
       await expect(borrowingService.returnBook(userId, bookId)).rejects.toThrow('Borrowing record not found or book already returned.');
     });
   
@@ -138,7 +126,6 @@ describe('BorrowingService', () => {
       const userId = 'user123';
       const bookId = 'book123';
   
-      // Mock Borrowing record
       const mockBorrowingData: MockBorrowing[] = [
         {
           UserID: userId,
@@ -148,12 +135,9 @@ describe('BorrowingService', () => {
         },
       ];
   
-      // Mock the findAll method to return mockBorrowingData
       mockBorrowing.findAll.mockResolvedValue(mockBorrowingData);
-      // Mock the Book findByPk method to return null
       mockBook.findByPk.mockResolvedValue(null);
   
-      // Expect the function to throw an error
       await expect(borrowingService.returnBook(userId, bookId)).rejects.toThrow('Book not found.');
     });
   });

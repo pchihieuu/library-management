@@ -1,9 +1,6 @@
 import { Author } from "../../models/author.entity";
 import { AuthorService } from "../../services/author.service";
 
-
-
-// Mock the Author model
 jest.mock('../../models/author.entity', () => ({
   Author: {
     findAll: jest.fn(),
@@ -18,7 +15,7 @@ describe('AuthorService', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks(); // Clear mock calls and instances after each test
+    jest.clearAllMocks();
   });
 
   describe('findByName', () => {

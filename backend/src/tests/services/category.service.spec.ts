@@ -1,8 +1,6 @@
 import { Category } from "../../models/category.entity";
 import { CategoryService } from "../../services/category.service";
 
-
-// Mock the Category model
 jest.mock('../../models/category.entity', () => ({
   Category: {
     findOne: jest.fn(),
@@ -17,7 +15,7 @@ describe('CategoryService', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks(); // Clear mock calls and instances after each test
+    jest.clearAllMocks(); 
   });
 
   describe('findBySlug', () => {

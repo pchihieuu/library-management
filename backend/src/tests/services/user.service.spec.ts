@@ -1,7 +1,6 @@
 import { User } from "../../models/user.entity";
 import { UserService } from "../../services/user.service";
 
-// Mock the User model
 jest.mock('../../models/user.entity', () => ({
   User: {
     create: jest.fn(),
@@ -20,7 +19,7 @@ describe('UserService', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks(); // Clear mock calls and instances after each test
+    jest.clearAllMocks(); 
   });
 
   describe('create', () => {

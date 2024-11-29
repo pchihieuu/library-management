@@ -11,8 +11,8 @@ describe('CategoryDto', () => {
       ISBN: '123-456-789',
       AuthorBook: 'author-1',
       CategoryBook: 'category-1',
-      authors: [], // Add authors if needed
-      categories: [] // Add categories if needed
+      authors: [],
+      categories: []
     };
 
     const categoryData: ICategory = {
@@ -24,13 +24,12 @@ describe('CategoryDto', () => {
 
     const categoryDto = new CategoryDto(categoryData);
 
-    // Check CategoryDto properties
     expect(categoryDto.CategoryID).toBe(categoryData.CategoryID);
     expect(categoryDto.CategoryName).toBe(categoryData.CategoryName);
     expect(categoryDto.Description).toBe(categoryData.Description);
-    expect(categoryDto.books.length).toBe(1); // Ensure books is not empty
-    expect(categoryDto.books[0] instanceof BookDto).toBe(true); // Ensure books[0] is a BookDto
-    expect(categoryDto.books[0].BookID).toBe(bookData.BookID); // Ensure correct mapping for book
+    expect(categoryDto.books.length).toBe(1); 
+    expect(categoryDto.books[0] instanceof BookDto).toBe(true); 
+    expect(categoryDto.books[0].BookID).toBe(bookData.BookID); 
   });
 
   it('should correctly map category data to CategoryDto when books is empty', () => {
@@ -38,30 +37,27 @@ describe('CategoryDto', () => {
       CategoryID: 'c1',
       CategoryName: 'Science Fiction',
       Description: 'Books related to science fiction',
-      books: [] // Empty books array
+      books: [] 
     };
 
     const categoryDto = new CategoryDto(categoryData);
 
-    // Check CategoryDto properties
     expect(categoryDto.CategoryID).toBe(categoryData.CategoryID);
     expect(categoryDto.CategoryName).toBe(categoryData.CategoryName);
     expect(categoryDto.Description).toBe(categoryData.Description);
-    expect(categoryDto.books.length).toBe(0); // Ensure books is an empty array
+    expect(categoryDto.books.length).toBe(0); 
   });
 
   it('should handle missing optional properties in CategoryDto', () => {
     const categoryData: ICategory = {
       CategoryID: 'c1',
       CategoryName: 'Science Fiction'
-      // No Description and books
     };
 
     const categoryDto = new CategoryDto(categoryData);
 
-    // Check CategoryDto properties
     expect(categoryDto.CategoryID).toBe(categoryData.CategoryID);
     expect(categoryDto.CategoryName).toBe(categoryData.CategoryName);
-    expect(categoryDto.books.length).toBe(0); // Ensure books is an empty array
+    expect(categoryDto.books.length).toBe(0);
   });
 });

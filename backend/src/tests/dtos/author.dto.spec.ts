@@ -11,8 +11,8 @@ describe('AuthorDto', () => {
       ISBN: '123-456-789',
       AuthorBook: 'author-1',
       CategoryBook: 'category-1',
-      authors: [], // Thêm tác giả nếu cần
-      categories: [] // Thêm thể loại nếu cần
+      authors: [],
+      categories: [] 
     };
 
     const authorData: IAuthor = {
@@ -24,13 +24,12 @@ describe('AuthorDto', () => {
 
     const authorDto = new AuthorDto(authorData);
 
-    // Kiểm tra các thuộc tính của AuthorDto
     expect(authorDto.AuthorID).toBe(authorData.AuthorID);
     expect(authorDto.FullName).toBe(authorData.FullName);
     expect(authorDto.Bio).toBe(authorData.Bio);
-    expect(authorDto.books.length).toBe(1); // Kiểm tra rằng books không bị rỗng
-    expect(authorDto.books[0] instanceof BookDto).toBe(true); // Kiểm tra rằng books[0] là BookDto
-    expect(authorDto.books[0].BookID).toBe(bookData.BookID); // Kiểm tra ánh xạ đúng cho book
+    expect(authorDto.books.length).toBe(1);
+    expect(authorDto.books[0] instanceof BookDto).toBe(true); 
+    expect(authorDto.books[0].BookID).toBe(bookData.BookID); 
   });
 
   it('should correctly map author data to AuthorDto when books is empty', () => {
@@ -38,31 +37,28 @@ describe('AuthorDto', () => {
       AuthorID: 'a1',
       FullName: 'John Doe',
       Bio: 'Famous author',
-      books: [] // Mảng sách rỗng
+      books: [] 
     };
 
     const authorDto = new AuthorDto(authorData);
 
-    // Kiểm tra các thuộc tính của AuthorDto
     expect(authorDto.AuthorID).toBe(authorData.AuthorID);
     expect(authorDto.FullName).toBe(authorData.FullName);
     expect(authorDto.Bio).toBe(authorData.Bio);
-    expect(authorDto.books.length).toBe(0); // Kiểm tra rằng books là mảng rỗng
+    expect(authorDto.books.length).toBe(0);
   });
 
   it('should handle missing optional properties in AuthorDto', () => {
     const authorData: IAuthor = {
       AuthorID: 'a1',
       FullName: 'John Doe',
-      // Không có Bio và books
     };
 
     const authorDto = new AuthorDto(authorData);
 
-    // Kiểm tra các thuộc tính của AuthorDto
     expect(authorDto.AuthorID).toBe(authorData.AuthorID);
     expect(authorDto.FullName).toBe(authorData.FullName);
-    expect(authorDto.Bio).toBeUndefined(); // Kiểm tra Bio không có
-    expect(authorDto.books.length).toBe(0); // Kiểm tra books là mảng rỗng
+    expect(authorDto.Bio).toBeUndefined();
+    expect(authorDto.books.length).toBe(0);
   });
 });

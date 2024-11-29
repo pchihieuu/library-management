@@ -19,7 +19,7 @@ describe('BooksAuthorsDto', () => {
 
   it('should validate BookID and AuthorID as UUIDs', async () => {
     const invalidData: IBooksAuthors = {
-      BookID: 'invalid-id',  // Không phải UUID hợp lệ
+      BookID: 'invalid-id',
       AuthorID: '67890'
     };
 
@@ -27,24 +27,24 @@ describe('BooksAuthorsDto', () => {
     const errors = await validate(booksAuthorsDto);
 
     expect(errors.length).toBeGreaterThan(0);
-    expect(errors[0].property).toBe('BookID');  // Lỗi sẽ được ném ra đối với BookID
+    expect(errors[0].property).toBe('BookID');  
   });
 
   it('should not fail when BookID and AuthorID are valid UUIDs', async () => {
     const validData: IBooksAuthors = {
-      BookID: '123e4567-e89b-12d3-a456-426614174000',  // UUID hợp lệ
-      AuthorID: '123e4567-e89b-12d3-a456-426614174001' // UUID hợp lệ
+      BookID: '123e4567-e89b-12d3-a456-426614174000',  
+      AuthorID: '123e4567-e89b-12d3-a456-426614174001' 
     };
 
     const booksAuthorsDto = new BooksAuthorsDto(validData);
     const errors = await validate(booksAuthorsDto);
 
-    expect(errors.length).toBe(0);  // Không có lỗi nếu tất cả đều hợp lệ
+    expect(errors.length).toBe(0);  
   });
 
   it('should throw error if any required property is missing', async () => {
     const invalidData: IBooksAuthors = {
-      BookID: '',  // Dữ liệu không hợp lệ cho BookID
+      BookID: '', 
       AuthorID: '67890'
     };
 
@@ -52,6 +52,6 @@ describe('BooksAuthorsDto', () => {
     const errors = await validate(booksAuthorsDto);
 
     expect(errors.length).toBeGreaterThan(0);
-    expect(errors[0].property).toBe('BookID');  // Kiểm tra lỗi cho BookID
+    expect(errors[0].property).toBe('BookID'); 
   });
 });

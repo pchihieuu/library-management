@@ -20,14 +20,14 @@ describe('BookDto', () => {
         { 
           CategoryID: '101', 
           CategoryName: 'Science', 
-          Description: 'Books about science',  // Cung cấp mô tả
-          books: []  // Bạn có thể để mảng trống hoặc thêm sách nếu cần
+          Description: 'Books about science',
+          books: [] 
         },
         { 
           CategoryID: '102', 
           CategoryName: 'Fiction', 
-          Description: 'Books in the fiction genre', // Cung cấp mô tả
-          books: []  // Cũng có thể để mảng trống
+          Description: 'Books in the fiction genre',
+          books: [] 
         }
       ]
     };
