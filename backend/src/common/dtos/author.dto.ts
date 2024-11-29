@@ -21,6 +21,6 @@ export class AuthorDto implements IAuthor {
     this.AuthorID = author.AuthorID;
     this.FullName = author.FullName;
     this.Bio = author.Bio;
-    this.books = author.books?.map(book => new BookDto(book));
+    this.books = author.books ? author.books.map(book => new BookDto(book)) : [];
   }
 }

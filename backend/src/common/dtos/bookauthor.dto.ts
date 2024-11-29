@@ -1,4 +1,4 @@
-import { IsUUID, IsOptional, IsDate } from 'class-validator';
+import { IsUUID } from 'class-validator';
 import { IBooksAuthors } from '../../interfaces/bookauthor.interface';
 
 export class BooksAuthorsDto implements IBooksAuthors {

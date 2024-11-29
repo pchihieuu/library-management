@@ -7,6 +7,7 @@ class AuthorController extends GenericController<Author> {
     const authorService = new AuthorService();
     super(authorService);
   }
+
 }
 
 export default AuthorController;
