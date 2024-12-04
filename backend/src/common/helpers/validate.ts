@@ -19,7 +19,7 @@ const validate = (schema: AnyZodObject) => async (req: Request, res: Response, n
     }
 
     return res.status(500).json({
-      status: 'Error nè',
+      status: 'Internal Server Error',
       message: 'Something went wrong!',
     });
   }

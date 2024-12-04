@@ -93,6 +93,49 @@ npm test
 ```bash
 npm test -- --coverage
 ```
+## Docker Setup
+### Requirements:
+- Docker installed on your machine.
+- Docker Compose installed.
+### 1. Set up environment locals for docker
+The application uses the following environment variables stored in a `.env` file:
+```bash
+POSTGRES_HOST=db
+POSTGRES_DB=YOUR_DB
+POSTGRES_PORT=YOUR_PORT
+POSTGRES_USER=YOUR_USER
+POSTGRES_PASSWORD=YOUR_PASSWORD
+GATEWAY_HOST=YOUR_GATEWAY_HOST
+```
+### 2. Build and Run the Application
+To build and start the application, run:
+```bash
+docker-compose up --build
+```
+This will:
+- Build the Docker image for the backend.
+- Start the backend service on http://localhost:8000.
+- Start a PostgreSQL database service.
+
+### 3. Accessing the Application
+- Backend: http://localhost:8000
+- PostgreSQL: Accessible on localhost:5432
+
+### 4. Stopping the Application
+To stop all services and remove the containers, run:
+```bash
+docker-compose down
+```
+### 5. Restarting the Application
+To restart the services without rebuilding:
+```bash
+docker-compose up -d
+```
+To rebuild and restart:
+```bash
+docker-compose up --build -d
+```
+
 The backend server will run on http://localhost:8000, and the frontend NextJS application will be available at http://localhost:3000.
 
 ## API Documentation
