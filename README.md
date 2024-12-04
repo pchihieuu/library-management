@@ -86,6 +86,13 @@ pnpm build
 npm run dev 
 pnpm dev
 ```
+
+### 8. Test the application
+```bash
+npm test
+```bash
+npm test -- --coverage
+```
 The backend server will run on http://localhost:8000, and the frontend NextJS application will be available at http://localhost:3000.
 
 ## API Documentation

@@ -1,7 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 
 import Database from './config/database';
-import { corsMiddleware, errorMiddleware, queryMiddleware, validationMiddleware } from './middlewares';
+import { corsMiddleware, queryMiddleware, errorMiddleware } from './middlewares';
 import authorRoute from './routes/author.route';
 import categoryRoute from './routes/category.route';
 import userRoute from './routes/user.route';
@@ -31,7 +31,7 @@ class App {
   protected async databaseSync(): Promise<void> {
     const db = new Database();
     try {
-      await db.sequelize?.sync();
+      await db.sequelize?.sync({ alter: true});
       console.log('🚀 Database synchronized successfully.');
     } catch (error) {
       console.error('❌ Failed to sync the database:', error);
