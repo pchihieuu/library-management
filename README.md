@@ -135,7 +135,9 @@ To rebuild and restart:
 ```bash
 docker-compose up --build -d
 ```
-
+```bash
+docker-compose exec -it backend sh
+```
 The backend server will run on http://localhost:8000, and the frontend NextJS application will be available at http://localhost:3000.
 
 ## API Documentation

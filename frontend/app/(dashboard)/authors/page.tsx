@@ -123,7 +123,7 @@ export default function Author() {
   // }
 
   return (
-    <main className="container mx-auto p-4">
+    <main data-page="Author" className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Authors</h1>
       <Button onClick={() => setIsAddOpen(true)} className="mb-4">
       <Plus className="mr-2 h-4 w-4" /> Add New Author

@@ -1,8 +1,7 @@
-'use client';
 import Home from "./home";
-export default function HomePage() {
+export default async function HomePage() {
   return (
-    <main>
+    <main data-page="Home">
         <Home />
     </main>
   );
