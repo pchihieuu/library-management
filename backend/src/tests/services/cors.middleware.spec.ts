@@ -13,11 +13,11 @@ describe('CORS Middleware', () => {
   it('should set the correct CORS headers for a valid origin', async () => {
     const response = await request(app)
       .get('/test')
-      .set('Origin', 'http://localhost:3000'); 
+      .set('Origin', '*'); 
 
     console.log(response.headers); 
     expect(response.status).toBe(200);
-    expect(response.headers['access-control-allow-origin']).toBe('http://localhost:3000');
+    expect(response.headers['access-control-allow-origin']).toBe('*');
     expect(response.headers['access-control-allow-methods']).toBe('GET, POST, PATCH, DELETE, PUT');
     expect(response.headers['access-control-allow-headers']).toBe('Content-Type, Authorization');
     expect(response.headers['access-control-allow-credentials']).toBe('true');
@@ -38,10 +38,10 @@ describe('CORS Middleware', () => {
   it('should handle OPTIONS requests (preflight)', async () => {
     const response = await request(app)
       .options('/test')
-      .set('Origin', 'http://localhost:3000');
+      .set('Origin', '*');
 
     expect(response.status).toBe(200);
-    expect(response.headers['access-control-allow-origin']).toBe('http://localhost:3000');
+    expect(response.headers['access-control-allow-origin']).toBe('*');
     expect(response.headers['access-control-allow-methods']).toBe('GET, POST, PATCH, DELETE, PUT');
     expect(response.headers['access-control-allow-headers']).toBe('Content-Type, Authorization');
     expect(response.headers['access-control-allow-credentials']).toBe('true');

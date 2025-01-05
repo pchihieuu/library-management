@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 const corsMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const allowedOrigin = process.env.GATEWAY_HOST || 'http://localhost:3000';  // Default to localhost if undefined
+  const allowedOrigin = process.env.GATEWAY_HOST || 'http://localhost:3001';  // Default to localhost if undefined
   const origin = req.headers.origin;
 
   // Set CORS headers based on origin
