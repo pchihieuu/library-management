@@ -157,7 +157,7 @@ Run the application with Docker Compose:
 ```bash
 docker-compose up --build
 ```
-The backend will be available at http://localhost:8000, and the frontend will be available at http://localhost:3000.
+The backend will be available at http://localhost:5000, and the frontend will be available at http://localhost:3000.
 
 ## 🙌 Contributing to the Project
 We welcome contributions to this project! Whether it’s fixing bugs, adding new features, or improving documentation, feel free to submit a pull request. Please follow the guidelines outlined in the CONTRIBUTING.md for submitting contributions.
