@@ -7,7 +7,7 @@ services:
       - "8000:8000"
     environment:
       POSTGRES_HOST: db
-      POSTGRES_DB: library_management
+      POSTGRES_DB: fullstack-boolfly
       POSTGRES_PORT: 5432
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: "123456"
@@ -20,7 +20,7 @@ services:
     container_name: postgres_container
     restart: always
     environment:
-      POSTGRES_DB: library_management
+      POSTGRES_DB: fullstack-boolfly
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: "123456"
     ports:
