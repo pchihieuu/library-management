@@ -52,7 +52,7 @@ The system is built using a modern stack of technologies for both frontend and b
 
 The system architecture is a monolithic design with a separation between frontend and backend services.
 
-<img loading="lazy" src="/public/images/bookmanagement.jpg" alt="Architecture" width="100%" height=600>
+<img loading="lazy" src="/public/images/bookmanagement.jpg" alt="Architecture" width="100%">
 
 ## Repository Structure
 
