@@ -4,27 +4,11 @@ The Library Management System is a full-fledged application built to manage libr
 
 ## Table of Contents
 
-1. [Introduction](#Introduction)
-2. [Key Features](#Key-Features)
-3. [System Overview](#👩‍💻-System-Overview)
-4. [Repository Structure](#Repository-Structure)
-5. [Installation Guide](#Installation-Guide)
+1. [System Overview](#👩‍💻-System-Overview)
+2. [Repository Structure](#Repository-Structure)
+3. [Installation Guide](#Installation-Guide)
     - [Requirements](#Requirements-📋)
     - [Setup](#🔨-setup)
-## Introduction
-
-The Library Management System is designed to help libraries manage their operations efficiently, from adding books to managing users and borrowing/returning books. The application is built with a Node.js backend, Next.js frontend, PostgreSQL database, and uses Sequelize for ORM. It includes features for managing books, authors, categories, and users with user roles, and allows tracking borrowing and returning history. It supports a clean, responsive user interface built using Next.js.
-
-## Key Features
-
-The project offers the following key features:
-
--   **Book Management**: Add, update, view, and delete books; track book availability and borrowing status.
--   **Author Management**: Manage author information including name, bio, and books written.
--   **Category Management**: Classify books into categories for easy browsing and search.
--   **User Management**: Add and manage users with different roles (Admin, User), update user details, and track borrowing history.
--   **Borrowing System**: Allow users to borrow, return, and renew books.
--   **Book Availability Tracking**: Track the status of each book (available, borrowed, reserved).
 
 ## System Overview
 
